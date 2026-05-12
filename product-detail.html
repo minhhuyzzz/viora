@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sản Phẩm — VIORA</title>
+  <meta name="description" content="VIORA — Thương hiệu thời trang & phụ kiện cao cấp Việt Nam."/>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  
+  <link rel="stylesheet" href="assets/libs/bootstrap.min.css"/>
+  <link rel="stylesheet" href="assets/libs/fontawesome/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/main.css"/>
+  
+  <style>
+    /* CSS cho trang Detail */
+    .detail-gallery-main { aspect-ratio: 3/4; background: #f9f9f9; overflow: hidden; position: relative; }
+    .detail-gallery-main img { width: 100%; height: 100%; object-fit: cover; }
+    .thumb-item { width: 80px; aspect-ratio: 3/4; cursor: pointer; opacity: 0.5; border: 1px solid transparent; transition: 0.3s; }
+    .thumb-item.active, .thumb-item:hover { opacity: 1; border-color: #000; }
+    
+    .size-btn { border: 1px solid #ddd; padding: 8px 16px; cursor: pointer; transition: 0.3s; background: #fff; font-size: 13px; font-weight: 600; }
+    .size-btn.active { background: #000; color: #fff; border-color: #000; }
+
+    .size-guide-hint {
+      border: 1px dashed #d8d8d8;
+      background: #fcfcfc;
+      padding: 12px 14px;
+      margin-top: 12px;
+      border-radius: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+    .size-guide-hint p {
+      margin: 0;
+      font-size: 12px;
+      color: #666;
+      letter-spacing: 0.3px;
+    }
+    .size-guide-link {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #111;
+      text-decoration: underline;
+      white-space: nowrap;
+    }
+    .size-guide-link:hover { color: #666; }
+    
+    .delivery-info { background: #fcfcfc; padding: 15px; border: 1px solid #eee; margin-top: 20px; }
+    .delivery-item { font-size: 13px; color: #555; margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
+    .delivery-item:last-child { margin-bottom: 0; }
+    
+    .review-card { padding: 20px; background: #fff; border: 1px solid #eee; margin-bottom: 15px; }
+    .review-avatar { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, #f5f5f5, #e0e0e0); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 700; }
+  </style>
+</head>
+<body>
+  <div id="app-loading"><div class="loading-logo">VIORA</div></div>
+
+  <div id="header-root"></div>
+
+  <main>
+    <nav class="breadcrumb-bar container" aria-label="Breadcrumb" id="breadcrumb" style="max-width:1400px; padding:0 5vw">
+      <a href="index.html" class="text-muted text-decoration-none small text-uppercase letter-spacing-1">Trang Chủ</a> <span class="text-muted mx-2">›</span>
+      <a href="shop.html" class="text-muted text-decoration-none small text-uppercase letter-spacing-1">Cửa Hàng</a> <span class="text-muted mx-2">›</span>
+      <span id="bc-cat" class="text-muted small text-uppercase letter-spacing-1"></span> <span id="bc-sep" class="text-muted mx-2" style="display:none">›</span>
+      <span id="bc-name" class="small text-uppercase letter-spacing-1" style="color:var(--gold)"></span>
+    </nav>
+
+    <section style="max-width:1400px; margin:0 auto; padding:2.5rem 5vw 5rem" id="detail-section">
+      <div id="detail-loading" style="text-align:center; padding:8rem 0; color:#999">
+        <div class="spinner-border text-dark mb-3" role="status"></div>
+        <div class="small text-uppercase letter-spacing-2">Đang tải tuyệt tác...</div>
+      </div>
+
+      <div id="detail-content" style="display:none">
+        <div class="row g-5">
+          <div class="col-lg-7">
+            <div class="product-gallery sticky-top" style="top: var(--viora-header-height, 84px); z-index: 1;">
+              <div class="detail-gallery-main mb-3" id="gallery-main">
+                <img id="gallery-main-img" src="" alt="" style="display:none"/>
+                <div id="gallery-ph" style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-size:6rem; font-family:var(--font-display); font-weight:900; color:#eee"></div>
+              </div>
+              <div class="gallery-thumbs d-flex gap-2 overflow-auto pb-2" id="gallery-thumbs"></div>
+            </div>
+          </div>
+
+          <div class="col-lg-5">
+            <div class="product-detail-content">
+              <div class="text-uppercase mb-2 fw-bold" id="d-cat" style="font-size:11px; letter-spacing:2px; color:#999"></div>
+              <h1 class="premium-font display-6 mb-3" id="d-name"></h1>
+              
+              <div class="d-flex align-items-center gap-2 mb-4 cursor-pointer" onclick="document.getElementById('reviews-section').scrollIntoView({behavior:'smooth'})">
+                <div class="stars-row text-warning" id="d-stars" style="font-size: 14px;"></div>
+                <span class="small fw-bold" id="d-rating"></span>
+                <span class="small text-muted text-decoration-underline" id="d-reviews"></span>
+              </div>
+
+              <div class="h3 fw-bold mb-4" id="d-price"></div>
+
+              <div id="d-sizes-wrap" class="mb-4">
+                <p class="small fw-bold text-uppercase mb-2">Kích cỡ: <span id="d-size-label" class="text-muted ms-2 fw-normal">—</span></p>
+                <div class="d-flex flex-wrap gap-2" id="d-size-grid"></div>
+                <div class="size-guide-hint">
+                  <p><i class="fa-solid fa-ruler-combined me-1"></i> Chưa chắc size? Xem bảng chuẩn trước khi thêm giỏ.</p>
+                  <a href="size-guide.html" class="size-guide-link">Hướng dẫn size</a>
+                </div>
+              </div>
+
+              <div class="d-flex gap-3 mb-4">
+                <div class="qty-control d-flex align-items-center border">
+                  <button class="btn btn-sm px-3 shadow-none" id="qty-minus">−</button>
+                  <span class="px-3 fw-bold" id="qty-val">1</span>
+                  <button class="btn btn-sm px-3 shadow-none" id="qty-plus">+</button>
+                </div>
+                <button class="btn btn-dark flex-grow-1 rounded-0 py-3 text-uppercase fw-bold small shadow-none" id="add-cart-btn" style="letter-spacing:1px">
+                  <span>Thêm Vào Giỏ Hàng</span>
+                </button>
+              </div>
+
+              <button class="btn btn-outline-dark w-100 rounded-0 py-3 mb-5 d-flex align-items-center justify-content-center gap-2 shadow-none transition-all" id="buy-now-btn">
+                <i class="fa-solid fa-bolt"></i> <span class="text-uppercase small fw-bold letter-spacing-1">Mua Ngay</span>
+              </button>
+
+              <div class="accordion accordion-flush border-top" id="infoAcc">
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button px-0 py-3 text-uppercase fw-bold small shadow-none bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#descCol">
+                        Mô Tả Sản Phẩm
+                      </button>
+                    </h2>
+                    <div id="descCol" class="accordion-collapse collapse show">
+                      <div class="accordion-body px-0 py-2 text-muted small lh-lg" id="d-desc" style="white-space: pre-line;"></div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                      <h2 class="accordion-header">
+                        <button class="accordion-button collapsed px-0 py-3 text-uppercase fw-bold small shadow-none bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#careCol">
+                          Chất Liệu & Bảo Quản
+                        </button>
+                      </h2>
+                      <div id="careCol" class="accordion-collapse collapse">
+                        <div class="accordion-body px-0 py-2 text-muted small lh-lg">
+                          <ul class="ps-3 mb-0">
+                            <li>Chất liệu cao cấp, nhập khẩu trực tiếp.</li>
+                            <li>Vệ sinh bằng khăn mềm, tránh hoá chất mạnh.</li>
+                            <li>Bảo quản nơi khô ráo, tránh ánh nắng trực tiếp.</li>
+                            <li>Không ngâm nước lâu đối với sản phẩm mạ kim loại.</li>
+                          </ul>
+                        </div>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="delivery-info">
+                <div class="delivery-item"><i class="fa-solid fa-truck-fast"></i> Miễn phí vận chuyển đơn từ 1.500.000₫</div>
+                <div class="delivery-item"><i class="fa-solid fa-rotate-left"></i> Đổi trả trong 30 ngày</div>
+                <div class="delivery-item"><i class="fa-solid fa-shield-check"></i> Sản phẩm chính hãng 100%</div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div id="reviews-section" class="mt-5 pt-5 border-top">
+          <h2 class="premium-font h3 mb-4">Đánh Giá Từ Khách Hàng</h2>
+          <div class="d-flex align-items-center gap-4 mb-5">
+            <span class="premium-font display-4 fw-bold" id="rv-score"></span>
+            <div>
+              <div class="stars-row text-warning mb-1" id="rv-stars" style="font-size: 1.2rem;"></div>
+              <div class="small text-muted" id="rv-count"></div>
+            </div>
+          </div>
+          <div id="rv-list"></div>
+        </div>
+
+        <div class="mt-5 pt-5 border-top">
+          <p class="small text-uppercase text-muted letter-spacing-2 mb-2">Có thể bạn thích</p>
+          <h2 class="premium-font h3 mb-5">Sản Phẩm Liên Quan</h2>
+          <div class="row g-4" id="related-grid"></div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-root"></div>
+
+  <script src="assets/libs/jquery.min.js"></script>
+  <script src="assets/libs/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/products-data.js"></script>
+  <script src="assets/js/core.js"></script> <script>
+    var _product = null;
+    var _qty = 1;
+    var _size = null;
+
+    // Dữ liệu Fake Review của bạn
+    var REVIEW_NAMES = ["Nguyễn Thị Lan","Trần Minh Anh","Lê Thị Hoa","Phạm Quỳnh Như","Hoàng Thị Mai","Đặng Ngọc Ánh"];
+    var REVIEW_TEXTS = [
+      "Sản phẩm rất đẹp, chất lượng tốt hơn mong đợi. Đóng gói cẩn thận, giao hàng nhanh!",
+      "Mình rất hài lòng với sản phẩm này. Chất liệu cao cấp, thiết kế tinh tế.",
+      "Đã mua nhiều lần tại VIORA, lần nào cũng ưng. Không làm mình thất vọng!",
+      "Size chuẩn, màu sắc đúng như ảnh. Sẽ quay lại ủng hộ shop.",
+      "Nhận hàng nhanh, sản phẩm đẹp lắm. Mặc lên rất sang và tôn dáng."
+    ];
+
+    // Helper: Đồng bộ đường dẫn ảnh
+    function fixPath(p) {
+      if (!p) return "";
+      if (p.startsWith('http')) return p;
+      let path = p.startsWith('/') ? p.substring(1) : p;
+      if (path.startsWith('assets/')) return path;
+      return "assets/" + (path.startsWith('images/') ? path : "images/" + path);
+    }
+    
+
+    // HÀM XỬ LÝ KÍNH LÚP (ZOOM) KHI RÊ CHUỘT
+    // ----------------------------------------------------
+    function zoomImage(e) {
+      const container = e.currentTarget;
+      const img = container.querySelector('img');
+      // Lấy tọa độ chuột trong thẻ div
+      const rect = container.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      
+      // Di chuyển tâm điểm zoom theo chuột và phóng to ảnh lên 2.5 lần
+      img.style.transformOrigin = `${x}% ${y}%`;
+      img.style.transform = 'scale(2.5)';
+    }
+
+    function resetZoom() {
+      const img = document.getElementById('gallery-main-img');
+      if(img) {
+        img.style.transformOrigin = 'center center';
+        img.style.transform = 'scale(1)'; // Trả về kích thước gốc
+      }
+    }
+    // Tạo rating ảo dựa trên ID
+    function seed(id){ return String(id).split("").reduce((a,c)=>a+c.charCodeAt(0),0); }
+
+    $(document).ready(function() {
+      // 1. Nạp Header/Footer từ file core
+      if(window.injectLayout) injectLayout();
+      else { if(window.initHeader) initHeader(); if(window.initFooter) initFooter(); }
+
+      // 2. Lấy sản phẩm từ URL
+      var params = new URLSearchParams(window.location.search);
+      var id = params.get("id");
+      if (!id) { window.location.href = "shop.html"; return; }
+
+      _product = VIORA_PRODUCTS.find(p => String(p.id) === String(id));
+      if (!_product) { window.location.href = "shop.html"; return; }
+
+      renderDetail();
+    });
+
+    function renderDetail() {
+      var p = _product;
+      document.title = p.name + " — VIORA";
+
+      // 1. Breadcrumb & Info
+      $("#bc-cat").html(`<a href="shop.html?category=${encodeURIComponent(p.category)}" class="text-muted text-decoration-none">${p.category}</a>`);
+      $("#bc-sep").show();
+      $("#bc-name").text(p.name);
+      
+      $("#d-cat").text(p.category);
+      $("#d-name").text(p.name);
+      $("#d-price").text(formatPrice(parsePrice(p.price)));
+      $("#d-desc").html(p.description || "Thông tin đang được cập nhật...");
+
+      // 2. Rating giả lập
+      var ratingV = (3.8 + (seed(p.id) % 12) / 10).toFixed(1);
+      var revCount = 18 + (seed(p.id) % 120);
+      $("#d-stars, #rv-stars").html(renderStarsHtml(ratingV));
+      $("#d-rating, #rv-score").text(ratingV);
+      $("#d-reviews").text(`(${revCount} đánh giá)`);
+      $("#rv-count").text(`${revCount} đánh giá từ người dùng`);
+
+      // 3. XỬ LÝ ẢNH (Bao nhiêu ảnh in ra bấy nhiêu, tự động ẩn ảnh dư thừa)
+      var imgs = (p.images || []).map(fixPath);
+      
+      if (imgs.length > 0) {
+        // Gắn ảnh chính và thêm lệnh onerror để nếu ảnh chính lỗi thì hiện chữ cái thay thế
+        $("#gallery-main-img").attr("src", imgs[0])
+                              .attr("onerror", "this.style.display='none'; document.getElementById('gallery-ph').style.display='flex';")
+                              .show();
+        $("#gallery-ph").hide();
+      } else {
+        $("#gallery-ph").text(p.name[0]).show();
+      }
+
+      // Vẽ Thumbnail: Thêm onerror="this.parentElement.style.display='none';"
+      if (imgs.length > 1) {
+        $("#gallery-thumbs").html(imgs.map((src, i) => `
+          <div class="thumb-item ${i===0 ? 'active' : ''}" onclick="changeImg(this, '${src}')">
+            <img src="${src}" class="w-100 h-100" style="object-fit:cover" onerror="this.parentElement.style.display='none';">
+          </div>
+        `).join('')).show();
+      } else {
+        $("#gallery-thumbs").hide(); // Chỉ có 1 ảnh thì ẩn thanh thumbnail đi
+      }
+
+      // 4. Kích cỡ
+      var sizes = p.sizes ? p.sizes.join(" ").split(/\s+/).filter(Boolean) : [];
+      if (sizes.length) {
+        _size = sizes[0];
+        $("#d-size-label").text(_size);
+        $("#d-size-grid").html(sizes.map(s => `
+          <button class="size-btn ${s===_size?'active':''}" onclick="selectSize(this, '${s}')">${s}</button>
+        `).join(''));
+      } else {
+        $("#d-sizes-wrap").hide();
+      }
+
+      updateWishBtn();
+
+      // 5. HIỂN THỊ REVIEWS
+      var s = seed(p.id);
+      var count = Math.min(4, Math.max(2, (s%3)+2));
+      var rvHtml = "";
+      for (var i=0; i<count; i++) {
+        var rname = REVIEW_NAMES[(s+i)%REVIEW_NAMES.length];
+        var rtext = REVIEW_TEXTS[(s+i)%REVIEW_TEXTS.length];
+        var dAgo = 3+(s+i*7)%28;
+        var d = new Date(); d.setDate(d.getDate()-dAgo);
+        var ds = d.toLocaleDateString("vi-VN", {day:"numeric", month:"long", year:"numeric"});
+        
+        rvHtml += `
+          <div class="review-card">
+            <div class="d-flex justify-content-between mb-3">
+              <div class="d-flex align-items-center gap-3">
+                <div class="review-avatar">${rname[0]}</div>
+                <div>
+                  <div class="fw-bold small">${rname}</div>
+                  <div class="x-small text-muted">${ds}</div>
+                </div>
+              </div>
+              <div class="stars-row text-warning small">${renderStarsHtml(5)}</div>
+            </div>
+            <p class="small text-muted mb-2">${rtext}</p>
+            <div class="badge bg-light text-dark border small fw-normal">✓ Đã mua hàng tại VIORA</div>
+          </div>
+        `;
+      }
+      $("#rv-list").html(rvHtml);
+
+      // 6. SẢN PHẨM LIÊN QUAN
+      var related = VIORA_PRODUCTS.filter(x => x.id !== p.id && x.category === p.category).slice(0,4);
+      if (related.length < 4) {
+        var extra = VIORA_PRODUCTS.filter(x => x.id !== p.id).slice(0, 4 - related.length);
+        related = related.concat(extra);
+      }
+      
+      $("#related-grid").html(related.map(rp => `
+        <div class="col-6 col-lg-3">
+          <div class="product-card cursor-pointer" onclick="location.href='product-detail.html?id=${rp.id}'">
+            <div class="product-img-wrap" style="aspect-ratio:3/4; overflow:hidden; background:#f9f9f9">
+              <img src="${fixPath(rp.images[0])}" class="w-100 h-100" style="object-fit:cover; transition:0.4s" 
+                   onmouseover="this.style.transform='scale(1.05)'" 
+                   onmouseout="this.style.transform='scale(1)'"
+                   onerror="this.src='assets/images/placeholder.jpg'">
+            </div>
+            <div class="pt-3">
+              <span class="x-small text-muted text-uppercase letter-spacing-1">${rp.category}</span>
+              <h3 class="h6 mb-2 mt-1 text-truncate">${rp.name}</h3>
+              <div class="fw-bold">${formatPrice(parsePrice(rp.price))}</div>
+            </div>
+          </div>
+        </div>
+      `).join(''));
+
+      $("#detail-loading").hide();
+      $("#detail-content").fadeIn();
+      setTimeout(() => $('#app-loading').fadeOut(), 300);
+    }
+
+    // Helper Functions
+    function renderStarsHtml(r) {
+      let h = "";
+      for(let i=1; i<=5; i++) {
+        if(i <= Math.floor(r)) h += "★";
+        else if(i - 0.5 <= r) h += "★"; // Ký tự nửa sao nếu có
+        else h += "☆";
+      }
+      return h;
+    }
+
+    function changeImg(el, src) {
+      $("#gallery-main-img").attr("src", src);
+      $(".thumb-item").removeClass("active").css("border-color", "transparent");
+      $(el).addClass("active").css("border-color", "#000");
+    }
+
+    function selectSize(btn, s) {
+      _size = s;
+      $("#d-size-label").text(s);
+      $(".size-btn").removeClass("active");
+      $(btn).addClass("active");
+    }
+
+    function updateWishBtn() {
+      // Giả sử có object Wishlist trong core.js
+      if(window.Wishlist) {
+        var wished = Wishlist.has(_product.id);
+        $("#wish-icon").text(wished ? "♥" : "♡");
+        $("#wish-label").text(wished ? "Đã Yêu Thích" : "Thêm Vào Yêu Thích");
+        if(wished) $("#wish-btn").removeClass("btn-outline-dark").addClass("btn-dark");
+        else $("#wish-btn").removeClass("btn-dark").addClass("btn-outline-dark");
+      }
+    }
+    
+    // XỬ LÝ NÚT MUA NGAY
+    $("#buy-now-btn").click(function() {
+      // 1. Kiểm tra xem khách đã chọn size chưa (nếu sản phẩm có size)
+      if (_product.sizes && _product.sizes.length > 0 && !_size) {
+        if(window.showToast) showToast("Vui lòng chọn kích cỡ!", "error"); 
+        else alert("Vui lòng chọn kích cỡ!");
+        return;
+      }
+      
+      // 2. Thêm vào giỏ hàng và Chuyển hướng
+      if(window.Cart) {
+        Cart.add(_product, _size, _qty); // Đưa vào giỏ
+        
+        // Hiệu ứng nhẹ báo đang chuyển trang
+        var $btn = $(this);
+        $btn.html("<i class='fa-solid fa-spinner fa-spin'></i> <span>ĐANG CHUYỂN HƯỚNG...</span>")
+            .removeClass("btn-outline-dark").addClass("btn-dark text-white");
+        
+        // Chuyển thẳng sang trang Checkout sau nửa giây
+        setTimeout(function() {
+          window.location.href = "checkout.html";
+        }, 500);
+      }
+    });
+    // Nút Qty
+    $("#qty-minus").click(() => { if(_qty > 1) { _qty--; $("#qty-val").text(_qty); } });
+    $("#qty-plus").click(() => { if(_qty < 10) { _qty++; $("#qty-val").text(_qty); } });
+
+    // Add to Cart
+    $("#add-cart-btn").click(function() {
+      if (_product.sizes && _product.sizes.length > 0 && !_size) {
+        if(window.showToast) showToast("Vui lòng chọn kích cỡ!", "error");
+        else alert("Vui lòng chọn kích cỡ!");
+        return;
+      }
+      
+      if(window.Cart) {
+        Cart.add(_product, _size, _qty);
+        // Hiệu ứng nút
+        var $btn = $(this);
+        var oldHtml = $btn.html();
+        $btn.html("<span>✓ Đã Thêm Vào Giỏ</span>").removeClass("btn-dark").addClass("bg-success text-white border-success");
+        setTimeout(() => { $btn.html(oldHtml).removeClass("bg-success text-white border-success").addClass("btn-dark"); }, 2000);
+      }
+    });
+
+    // Wishlist
+    $("#wish-btn").click(function() {
+      if(window.Wishlist) {
+        Wishlist.toggle(_product.id);
+        updateWishBtn();
+        if(window.showToast) showToast("Đã cập nhật danh sách yêu thích");
+      }
+    });
+  </script>
+</body>
+</html>

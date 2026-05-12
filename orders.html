@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Đơn Hàng Của Tôi — VIORA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="assets/libs/bootstrap.min.css"/>
+  <link rel="stylesheet" href="assets/libs/fontawesome/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/main.css"/>
+  <link rel="stylesheet" href="assets/css/account.css">
+</head>
+<body>
+  <div id="header-root"></div>
+  <div style="height: 70px;"></div>
+
+  <div class="account-page-header">
+    <div class="container"><h1 class="account-page-title">Đơn Hàng</h1></div>
+  </div>
+
+  <main class="container mb-5 pb-5" style="max-width: 1200px;">
+    <div class="account-layout">
+        
+        <aside class="account-sidebar">
+            <a href="profile.html" class="account-nav-item"><i class="fa-regular fa-id-card" style="width:20px"></i> Thông tin cá nhân</a>
+            <a href="orders.html" class="account-nav-item active"><i class="fa-solid fa-box" style="width:20px"></i> Lịch sử đơn hàng</a>
+            <a href="#" onclick="vioraLogout(event)" class="account-nav-item text-danger"><i class="fa-solid fa-arrow-right-from-bracket" style="width:20px"></i> Đăng xuất</a>
+        </aside>
+
+        <section class="account-content">
+            <div class="account-card">
+                <h2 class="account-card-title">Lịch Sử Đơn Hàng</h2>
+                
+                <div id="orders-list"></div>
+            </div>
+        </section>
+
+    </div>
+  </main>
+
+  <div id="footer-root"></div>
+
+  <script src="assets/libs/jquery.min.js"></script>
+  <script src="assets/libs/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/core.js"></script> 
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        if(window.injectLayout) injectLayout();
+        if(window.initHeader) initHeader();
+
+        // Check Login
+        let user = JSON.parse(localStorage.getItem('viora_user'));
+        if (!user || !user.loggedIn) { window.location.href = "login.html"; return; }
+
+        renderOrders();
+    });
+
+    // Hàm fix ảnh
+    function fixOrderImg(p) {
+        if (!p) return "";
+        if (p.startsWith('http')) return p;
+        let path = p.startsWith('/') ? p.substring(1) : p;
+        if (path.startsWith('assets/')) return path;
+        return "assets/" + (path.startsWith('images/') ? path : "images/" + path);
+    }
+
+    function renderOrders() {
+        // Lấy danh sách đơn hàng (Bạn phải từng Checkout thành công mới có)
+        let orders = JSON.parse(localStorage.getItem('viora_orders') || '[]');
+        const container = document.getElementById('orders-list');
+
+        // Nếu rỗng
+        if (orders.length === 0) {
+            container.innerHTML = `
+                <div class="text-center py-5">
+                    <i class="fa-solid fa-box-open mb-3" style="font-size: 40px; color: #ddd;"></i>
+                    <p class="text-muted">Bạn chưa có đơn hàng nào.</p>
+                    <a href="shop.html" class="btn btn-dark px-4 py-2 rounded-0 mt-2">MUA SẮM NGAY</a>
+                </div>
+            `;
+            return;
+        }
+
+        // Có đơn hàng
+        let html = '';
+        orders.forEach(order => {
+            // Render danh sách sản phẩm trong 1 đơn hàng
+            let itemsHtml = order.items.map(item => {
+                let img = fixOrderImg(item.image);
+                let initial = item.name ? item.name.charAt(0) : 'V';
+                return `
+                    <div class="order-product">
+                        <img src="${img}" class="order-img" onerror="this.outerHTML='<div class=\\'order-img d-flex align-items-center justify-content-center fw-bold fs-4 text-muted\\'>${initial}</div>'">
+                        <div>
+                            <div class="fw-bold small">${item.name}</div>
+                            <div class="text-muted" style="font-size: 12px;">Phân loại: ${item.size || 'Freesize'} x ${item.qty}</div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            // Chuyển ngày tháng năm ISO -> VN
+            let dateObj = new Date(order.createdAt || Date.now());
+            let dateStr = dateObj.toLocaleDateString('vi-VN', { day:'2-digit', month:'2-digit', year:'numeric' });
+
+            html += `
+                <div class="order-item">
+                    <div class="order-header">
+                        <div><strong class="text-dark">${order.id}</strong> <span class="text-muted ms-2">| Đặt ngày: ${dateStr}</span></div>
+                        <span class="badge-status status-success"><i class="fa-solid fa-check"></i> ĐẶT THÀNH CÔNG</span>
+                    </div>
+                    <div class="order-body">
+                        ${itemsHtml}
+                        <div class="mt-3 pt-3 border-top text-end">
+                            <span class="text-muted small">Tổng tiền:</span> 
+                            <span class="fw-bold fs-5 text-dark ms-2">${formatPrice(order.total)}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+
+        container.innerHTML = html;
+    }
+  </script>
+</body>
+</html>

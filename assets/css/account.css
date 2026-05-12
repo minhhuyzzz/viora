@@ -1,0 +1,154 @@
+/* ============================================================
+   VIORA — ACCOUNT & ORDERS STYLES
+   ============================================================ */
+body { background-color: #fcfcfc; }
+
+.account-page-header {
+    background: #111;
+    color: #fff;
+    padding: 60px 0 40px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.account-page-title {
+    font-family: var(--font-display, 'Playfair Display', serif);
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.account-layout {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+/* Sidebar Menu Bên Trái */
+.account-sidebar {
+    width: 250px;
+    flex-shrink: 0;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    padding: 20px 0;
+}
+
+.account-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px 25px;
+    color: #555;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.3s;
+    border-left: 3px solid transparent;
+}
+
+.account-nav-item:hover {
+    background: #f9f9f9;
+    color: #000;
+}
+
+.account-nav-item.active {
+    color: #000;
+    background: #fafafa;
+    border-left-color: #c5a059; /* Màu Vàng Gold */
+}
+
+/* Nội dung Bên Phải */
+.account-content {
+    flex-grow: 1;
+    min-width: 0;
+}
+
+.account-card {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    padding: 40px;
+}
+
+.account-card-title {
+    font-family: var(--font-display, 'Playfair Display', serif);
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+/* Form Input */
+.acc-input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: 0.3s;
+    background: #fff;
+}
+.acc-input:focus { border-color: #000; outline: none; box-shadow: 0 0 0 1px #000; }
+.acc-label { font-size: 12px; font-weight: 600; text-transform: uppercase; color: #555; margin-bottom: 8px; display: block; }
+
+.btn-acc-save {
+    background: #000;
+    color: #fff;
+    border: none;
+    padding: 14px 30px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.btn-acc-save:hover { background: #333; }
+
+/* Item Đơn Hàng */
+.order-item {
+    border: 1px solid #eee;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.order-header {
+    background: #f9f9f9;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    font-size: 13px;
+}
+
+.order-body { padding: 20px; }
+
+.order-product {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+.order-product:last-child { margin-bottom: 0; }
+
+.order-img { width: 60px; height: 80px; object-fit: cover; border-radius: 4px; background: #f5f5f5; }
+
+.badge-status {
+    padding: 5px 10px;
+    font-size: 11px;
+    font-weight: 700;
+    border-radius: 20px;
+    text-transform: uppercase;
+}
+.status-pending { background: #fff3cd; color: #856404; }
+.status-success { background: #d4edda; color: #155724; }
+
+@media (max-width: 768px) {
+    .account-layout { flex-direction: column; }
+    .account-sidebar { width: 100%; }
+}

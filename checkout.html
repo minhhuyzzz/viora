@@ -1,0 +1,262 @@
+\<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Thanh Toán — VIORA LUXURY</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  
+  <link rel="stylesheet" href="assets/libs/bootstrap.min.css"/>
+  <link rel="stylesheet" href="assets/libs/fontawesome/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/main.css"/>
+  <link rel="stylesheet" href="assets/css/checkout.css">
+  <style>
+      .header-spacing { height: 90px; }
+  </style>
+</head>
+<body>
+  <div id="app-loading" style="transition: opacity 0.4s;"><div class="loading-logo">VIORA</div></div>
+
+  <div id="header-root"></div>
+
+  <div class="header-spacing"></div>
+
+  <main class="container py-4" style="max-width: 1200px; min-height: 65vh;">
+    <h1 class="premium-font h2 mb-4">Thanh Toán Đơn Hàng</h1>
+
+    <div id="checkout-empty" style="display:none; text-align:center; padding: 60px 0;">
+      <i class="fa-solid fa-bag-shopping" style="font-size: 60px; color: #ddd; margin-bottom: 20px;"></i>
+      <h2 class="premium-font h4 mb-3">Giỏ hàng đang trống</h2>
+      <p class="text-muted mb-4">Bạn chưa có sản phẩm để thanh toán.</p>
+      <a href="shop.html" class="btn btn-dark px-5 py-3 rounded-0 fw-bold letter-spacing-1">KHÁM PHÁ NGAY</a>
+    </div>
+
+    <div id="checkout-content" class="row g-5" style="display:none;">
+      <div class="col-lg-7">
+        <div class="summary-box">
+          <h2 class="premium-font h4 mb-4">Thông Tin Nhận Hàng</h2>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="chk-label">Họ và tên</label>
+              <input id="checkout-name" type="text" class="chk-input" placeholder="Nguyễn Văn A" autocomplete="name">
+            </div>
+            <div class="col-md-6">
+              <label class="chk-label">Số điện thoại</label>
+              <input id="checkout-phone" type="tel" class="chk-input" placeholder="09xxxxxxxx" autocomplete="tel">
+            </div>
+            <div class="col-12">
+              <label class="chk-label">Email</label>
+              <input id="checkout-email" type="email" class="chk-input" placeholder="you@example.com" autocomplete="email">
+            </div>
+            <div class="col-md-6">
+              <label class="chk-label">Tỉnh / Thành phố</label>
+              <input id="checkout-city" type="text" class="chk-input" placeholder="TP. Hồ Chí Minh">
+            </div>
+            <div class="col-md-6">
+              <label class="chk-label">Quận / Huyện</label>
+              <input id="checkout-district" type="text" class="chk-input" placeholder="Quận 1">
+            </div>
+            <div class="col-12">
+              <label class="chk-label">Địa chỉ giao hàng</label>
+              <input id="checkout-address" type="text" class="chk-input" placeholder="Số nhà, đường, phường/xã, quận/huyện, tỉnh/thành phố">
+            </div>
+            <div class="col-12">
+              <label class="chk-label">Ghi chú</label>
+              <textarea id="checkout-note" class="chk-input" rows="3" placeholder="Ghi chú thêm cho đơn hàng (không bắt buộc)"></textarea>
+            </div>
+            <div class="col-12">
+              <label class="chk-label">Phương thức thanh toán</label>
+              <label class="payment-method">
+                <input type="radio" name="checkout-payment" value="cod" checked>
+                <span>Thanh toán khi nhận hàng (COD)</span>
+                <i class="fa-solid fa-money-bill-wave payment-icon"></i>
+              </label>
+              <label class="payment-method">
+                <input type="radio" name="checkout-payment" value="bank">
+                <span>Chuyển khoản ngân hàng</span>
+                <i class="fa-solid fa-building-columns payment-icon"></i>
+              </label>
+            </div>
+          </div>
+          <p id="checkout-error" class="text-danger small mt-3 mb-0" style="display:none;"></p>
+        </div>
+      </div>
+
+      <div class="col-lg-5">
+        <div class="summary-box">
+          <h2 class="premium-font h4 mb-4">Đơn Hàng Của Bạn</h2>
+          <div id="checkout-items"></div>
+
+          <div class="price-row">
+            <span>Tạm tính</span>
+            <span id="checkout-subtotal">0₫</span>
+          </div>
+          <div class="price-row">
+            <span>Phí giao hàng</span>
+            <span>Tính sau</span>
+          </div>
+          <div class="price-row total">
+            <span>Tổng cộng</span>
+            <span id="checkout-total">0₫</span>
+          </div>
+
+          <button id="place-order-btn" class="btn-place-order mt-3">ĐẶT HÀNG</button>
+          <a href="cart.html" class="d-inline-block mt-3 small text-muted text-decoration-underline">Quay lại giỏ hàng</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div id="footer-root"></div>
+
+  <script src="assets/libs/jquery.min.js"></script>
+  <script src="assets/libs/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/core.js"></script> 
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const loader = document.getElementById('app-loading');
+      if (loader) setTimeout(() => { loader.style.opacity = '0'; setTimeout(() => loader.style.display = 'none', 400); }, 300);
+
+      if (window.injectLayout) injectLayout();
+      if (window.initHeader) initHeader();
+
+      renderCheckoutPage();
+    });
+
+    function renderCheckoutPage() {
+      let items = [];
+      try { items = JSON.parse(localStorage.getItem('viora_cart')) || []; } catch(e) {}
+      let savedProfile = null;
+      try { savedProfile = JSON.parse(localStorage.getItem('viora_checkout_profile')) || null; } catch(e) {}
+
+      const emptyState = document.getElementById('checkout-empty');
+      const contentState = document.getElementById('checkout-content');
+
+      if (items.length === 0) {
+        if(emptyState) emptyState.style.display = 'block';
+        if(contentState) contentState.style.display = 'none';
+        if (window.Cart && Cart.updateBadge) Cart.updateBadge();
+        return;
+      }
+
+      if(emptyState) emptyState.style.display = 'none';
+      if(contentState) contentState.style.display = 'flex';
+
+      let html = '';
+      let subtotal = 0;
+
+      items.forEach((item) => {
+        const itemTotal = item.price * item.qty;
+        subtotal += itemTotal;
+
+        html += `
+          <div class="chk-item">
+            <div class="chk-item-img-wrap">
+              <img src="${item.image || ''}" class="chk-item-img" alt="${item.name}">
+              <span class="chk-item-qty">${item.qty}</span>
+            </div>
+            <div class="chk-item-info">
+              <div class="chk-item-name">${item.name}</div>
+              <div class="small text-muted">Size: ${item.size || 'Freesize'}</div>
+            </div>
+            <div class="fw-semibold">
+              ${(typeof formatPrice === 'function') ? formatPrice(itemTotal) : itemTotal + '₫'}
+            </div>
+          </div>
+        `;
+      });
+
+      document.getElementById('checkout-items').innerHTML = html;
+
+      const fmtSubtotal = (typeof formatPrice === 'function') ? formatPrice(subtotal) : subtotal + '₫';
+      document.getElementById('checkout-subtotal').textContent = fmtSubtotal;
+      document.getElementById('checkout-total').textContent = fmtSubtotal;
+
+      if (window.Cart && Cart.updateBadge) Cart.updateBadge();
+
+      if (savedProfile) {
+        document.getElementById('checkout-name').value = savedProfile.name || '';
+        document.getElementById('checkout-phone').value = savedProfile.phone || '';
+        document.getElementById('checkout-email').value = savedProfile.email || '';
+        document.getElementById('checkout-city').value = savedProfile.city || '';
+        document.getElementById('checkout-district').value = savedProfile.district || '';
+        document.getElementById('checkout-address').value = savedProfile.address || '';
+        document.getElementById('checkout-note').value = savedProfile.note || '';
+        if (savedProfile.paymentMethod) {
+          const savedPayment = document.querySelector(`input[name="checkout-payment"][value="${savedProfile.paymentMethod}"]`);
+          if (savedPayment) savedPayment.checked = true;
+        }
+      }
+
+      const placeOrderBtn = document.getElementById('place-order-btn');
+      if (placeOrderBtn) {
+        placeOrderBtn.onclick = function() {
+          const errorBox = document.getElementById('checkout-error');
+          const name = document.getElementById('checkout-name').value.trim();
+          const phone = document.getElementById('checkout-phone').value.trim();
+          const email = document.getElementById('checkout-email').value.trim();
+          const city = document.getElementById('checkout-city').value.trim();
+          const district = document.getElementById('checkout-district').value.trim();
+          const address = document.getElementById('checkout-address').value.trim();
+          const note = document.getElementById('checkout-note').value.trim();
+          const payment = document.querySelector('input[name="checkout-payment"]:checked');
+
+          const phoneRegex = /^(0|\+84)(\d{9,10})$/;
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+          if (!name || !phone || !email || !city || !district || !address || !payment) {
+            errorBox.textContent = 'Vui lòng nhập đầy đủ thông tin bắt buộc.';
+            errorBox.style.display = 'block';
+            return;
+          }
+          if (!phoneRegex.test(phone.replace(/\s+/g, ''))) {
+            errorBox.textContent = 'Số điện thoại chưa đúng định dạng.';
+            errorBox.style.display = 'block';
+            return;
+          }
+          if (!emailRegex.test(email)) {
+            errorBox.textContent = 'Email chưa đúng định dạng.';
+            errorBox.style.display = 'block';
+            return;
+          }
+
+          errorBox.style.display = 'none';
+          
+          const checkoutProfile = {
+            name: name,
+            phone: phone,
+            email: email,
+            city: city,
+            district: district,
+            address: address,
+            note: note,
+            paymentMethod: payment.value
+          };
+          localStorage.setItem('viora_checkout_profile', JSON.stringify(checkoutProfile));
+
+          /* --- FIX LỖI: LƯU LỊCH SỬ ĐƠN HÀNG VÀO BỘ NHỚ --- */
+          let historyOrders = JSON.parse(localStorage.getItem('viora_orders') || '[]');
+          let newOrder = {
+            id: "VIO" + Date.now().toString().slice(-6),
+            items: items, // mảng items đã có sẵn từ trên
+            info: checkoutProfile,
+            total: subtotal, // tổng tiền tính từ trên
+            createdAt: new Date().toISOString()
+          };
+          historyOrders.unshift(newOrder); // Đẩy đơn mới lên đầu danh sách
+          localStorage.setItem('viora_orders', JSON.stringify(historyOrders));
+          /* ------------------------------------------------ */
+
+          localStorage.removeItem('viora_cart');
+          if (window.Cart && Cart.updateBadge) Cart.updateBadge();
+          
+          alert('Đặt hàng thành công! Đơn hàng của bạn đã được ghi nhận.');
+          window.location.href = 'orders.html'; // Chuyển thẳng sang trang lịch sử đơn hàng
+        };
+      }
+    }
+  </script>
+</body>
+</html>

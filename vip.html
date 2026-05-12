@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Thành viên VIORA VIP</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  
+  <link rel="stylesheet" href="assets/libs/bootstrap.min.css"/>
+  <link rel="stylesheet" href="assets/libs/fontawesome/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/vip.css">
+</head>
+<body class="vip-mode">
+
+  <header class="vip-header">
+    <div class="vip-header-inner">
+        <a href="index.html" class="vip-logo-wrap">
+            <div>
+                <div class="vip-logo"><i class="fa-solid fa-shield-halved" style="font-size: 18px;"></i> VIORA</div>
+                <div class="vip-subtitle">Thành viên VIP</div>
+            </div>
+        </a>
+        <a href="shop.html" class="btn-back-shop"><i class="fa-solid fa-chevron-left me-1"></i> trở về SHOP online</a>
+    </div>
+    <div class="vip-gold-line"></div>
+  </header>
+
+  <main class="vip-main">
+    <div class="vip-card">
+        <div id="vip-signup-flow">
+            <div class="vip-eyebrow">Đăng nhập / Đăng ký VIP</div>
+            <h1 class="vip-title">Xác thực tài khoản</h1>
+            <p class="vip-desc">Nhập số điện thoại và thông tin để tham gia. Nếu bạn chưa có thẻ VIP, hệ thống sẽ tạo tự động và nhận ngay <b class="text-white">giảm giá 5%</b> cho thẻ mới!</p>
+
+            <div id="vip-alert" class="alert alert-danger p-2 small" style="display: none;"></div>
+
+            <form id="form-vip">
+                <input type="text" class="vip-input-full" id="vip-name" placeholder="Nhập Họ và Tên của bạn" required>
+                
+                <div class="vip-input-wrap">
+                    <div class="vip-input-prefix">+84</div>
+                    <input type="tel" class="vip-input" id="vip-phone" placeholder="Nhập số điện thoại" required>
+                </div>
+
+                <button type="submit" class="btn-vip-submit" id="btn-vip-submit">TẠO THẺ & NHẬN ƯU ĐÃI</button>
+            </form>
+
+            <div class="text-center mt-3">
+                <span class="small" style="color: #888;">Đã có tài khoản?</span> 
+                <a href="login.html" class="small text-white text-decoration-underline fw-bold">Đăng nhập bằng Email</a>
+            </div>
+        </div>
+
+        <div id="vip-member-flow" class="vip-member-flow" style="display: none;">
+            <div class="vip-eyebrow vip-eyebrow-gold">Thẻ VIP đã kích hoạt</div>
+            <h1 class="vip-title">Bạn đã là thành viên VIORA VIP</h1>
+            <p class="vip-desc">Xin chào <strong id="vip-member-name" class="text-white"></strong>. Thẻ VIP của bạn đang hoạt động — ưu đãi giảm <b class="text-white">5%</b> cho thẻ mới đã được áp dụng khi mua hàng tại Shop.</p>
+            <p class="vip-member-meta"><span class="vip-member-label">Liên kết SĐT:</span> <span id="vip-member-phone"></span></p>
+            <div class="vip-member-actions">
+                <a href="shop.html" class="btn-vip-submit vip-member-btn text-center text-decoration-none d-inline-block">MUA SẮM TẠI SHOP</a>
+                <a href="profile.html" class="btn-vip-outline text-center text-decoration-none d-inline-block">Xem hồ sơ tài khoản</a>
+            </div>
+        </div>
+
+        <section class="vip-benefits">
+            <div class="benefit-item">
+                <i class="fa-solid fa-tags benefit-icon"></i>
+                <div>
+                    <div class="benefit-title">Giảm ngay 5%</div>
+                    <div class="benefit-desc">Dành cho thành viên VIP mới kích hoạt.</div>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <i class="fa-solid fa-box-open benefit-icon"></i>
+                <div>
+                    <div class="benefit-title">Theo dõi đơn hàng</div>
+                    <div class="benefit-desc">Xem lịch sử mua và điểm tích lũy trực tuyến.</div>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <i class="fa-solid fa-chart-line benefit-icon"></i>
+                <div>
+                    <div class="benefit-title">Tích lũy / Giảm giá thành viên</div>
+                    <div class="benefit-desc">Ưu đãi leo hạng lên đến <span class="text-white fw-bold">15%</span>.</div>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <i class="fa-solid fa-gift benefit-icon"></i>
+                <div>
+                    <div class="benefit-title">Voucher riêng</div>
+                    <div class="benefit-desc">Voucher sinh nhật & các ưu đãi khác dành riêng cho VIP.</div>
+                </div>
+            </div>
+        </section>
+
+        <p class="vip-policy">
+            Bằng việc tiếp tục, bạn đồng ý với <a href="#">Điều khoản sử dụng</a> và <a href="#">Chính sách bảo mật</a> của VIORA.
+        </p>
+    </div>
+  </main>
+
+  <footer class="vip-footer">
+    © 2026 VIORA.vn · Trang thẻ VIP dành cho thành viên.
+  </footer>
+
+  <script src="assets/libs/jquery.min.js"></script>
+  <script src="assets/js/storage.js"></script>
+
+  <script>
+    function isVipMember(user) {
+        if (!user || !user.loggedIn) return false;
+        if (user.vip === true) return true;
+        var em = user.email && String(user.email).toLowerCase();
+        return em && em.endsWith('@viora.vip');
+    }
+
+    function showVipMemberView(user) {
+        document.getElementById('vip-signup-flow').style.display = 'none';
+        document.getElementById('vip-member-flow').style.display = 'block';
+        document.getElementById('vip-member-name').textContent = user.name || 'Quý khách';
+        var phone = user.phone;
+        if (!phone && user.email) {
+            phone = String(user.email).replace(/@viora\.vip$/i, '');
+        }
+        document.getElementById('vip-member-phone').textContent = phone || '—';
+    }
+
+    (function initVipPage() {
+        var u = Auth.getCurrentUser();
+        if (isVipMember(u)) showVipMemberView(u);
+    })();
+
+    document.getElementById('form-vip').addEventListener('submit', function(e) {
+        e.preventDefault();
+        var btn = document.getElementById('btn-vip-submit');
+        btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Đang xử lý...';
+
+        setTimeout(function() {
+            var name = document.getElementById('vip-name').value.trim();
+            var phone = document.getElementById('vip-phone').value.trim();
+            var email = phone + "@viora.vip";
+            var pass = "vip123";
+
+            var result = Auth.register(name, email, pass);
+
+            if (result.success) {
+                var users = Auth.getUsers();
+                var idx = users.findIndex(function(u) { return u.email === email; });
+                if (idx !== -1) {
+                    users[idx] = Object.assign({}, users[idx], { phone: phone, vip: true });
+                    localStorage.setItem('viora_users', JSON.stringify(users));
+                }
+                var userObj = Auth.getCurrentUser();
+                userObj.phone = phone;
+                userObj.vip = true;
+                localStorage.setItem('viora_user', JSON.stringify(userObj));
+
+                var alertBox = document.getElementById('vip-alert');
+                alertBox.style.display = 'none';
+                btn.innerHTML = 'TẠO THẺ & NHẬN ƯU ĐÃI';
+                showVipMemberView(userObj);
+            } else {
+                var alertBox = document.getElementById('vip-alert');
+                alertBox.className = "alert alert-danger p-2 small";
+                alertBox.textContent = "Số điện thoại này đã được sử dụng!";
+                alertBox.style.display = 'block';
+                btn.innerHTML = 'TẠO THẺ & NHẬN ƯU ĐÃI';
+            }
+        }, 1000);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Giới thiệu Website & Nhóm thực hiện — VIORA</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="assets/libs/bootstrap.min.css"/>
+  <link rel="stylesheet" href="assets/libs/fontawesome/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/main.css"/>
+  <link rel="stylesheet" href="assets/css/intro.css"> </head>
+<body>
+  <div id="app-loading" style="transition: opacity 0.4s;"><div class="loading-logo">VIORA</div></div>
+
+  <div id="header-root"></div>
+  <div style="height: 60px;"></div>
+
+  <header class="intro-page-header">
+    <div class="container">
+        <h1 class="intro-title">Về Dự Án VIORA</h1>
+        <p class="text-muted text-uppercase" style="letter-spacing: 2px; font-size: 13px;">Đồ án Thiết kế và Phát triển Website</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="container project-vision">
+        <nav class="breadcrumb-bar" aria-label="Breadcrumb">
+            <a href="index.html" class="text-muted text-decoration-none small text-uppercase letter-spacing-1">Trang Chủ</a> <span class="text-muted mx-2">›</span>
+            <span class="small text-uppercase letter-spacing-1" style="color:var(--gold)">Giới Thiệu Dự Án</span>
+        </nav>
+
+        <p class="project-vision-text">
+            <strong>VIORA</strong> là một nền tảng thương mại điện tử mô phỏng, được xây dựng và phát triển như một dự án học thuật trong khuôn khổ môn học Nguyên lí lập trình Web. Với mục tiêu tạo ra một không gian mua sắm trực tuyến đẳng cấp, VIORA được lấy cảm hứng từ các thương hiệu thời trang xa xỉ hàng đầu thế giới.
+        </p>
+        
+        <div class="project-highlight">
+            "Không chỉ là một trang web bán hàng, VIORA là sự kết hợp giữa nghệ thuật thị giác (UI), trải nghiệm người dùng tối ưu (UX) và các nền tảng kỹ thuật hiện đại (HTML5, CSS3, Javascript, Bootstrap / jQuery, LocalStorage)."
+        </div>
+
+        <p class="project-vision-text">
+            Website được thiết kế dựa trên phong cách "Minimalism" và "Quiet Luxury" - sử dụng tối đa các khoảng trắng, phông chữ có chân (Serif) sang trọng và gam màu đơn sắc để làm nổi bật hình ảnh sản phẩm. Hệ thống bao gồm đầy đủ các tính năng cơ bản của một trang e-commerce như: Phân loại sản phẩm, Giỏ hàng, Quy trình thanh toán, Lịch sử đơn hàng và Hệ thống bài viết tạp chí.
+        </p>
+    </section>
+
+    <section class="team-section">
+        <div class="container">
+            <h2 class="team-section-title">Đội Ngũ Phát Triển</h2>
+            
+            <div class="team-grid">
+                
+                <div class="team-card">
+                    <div class="team-avatar-wrap">
+                        <img src="assets/images/tranminhhuy.jpg" alt="Avatar" class="team-avatar">
+                    </div>
+                    <h3 class="team-name">Trần Minh Huy</h3>
+                    <div class="team-role">Trưởng Nhóm / Developer</div>
+                    <div class="team-mssv">MSSV: 24746841</div>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-avatar-wrap">
+                        <img src="assets/images/nguyenngocdiem.jpg" alt="Avatar" class="team-avatar">
+                    </div>
+                    <h3 class="team-name">Nguyễn Ngọc Diễm</h3>
+                    <div class="team-role">Frontend & UI/UX</div>
+                    <div class="team-mssv">MSSV: 24727211</div>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-avatar-wrap">
+                        <img src="assets/images/tranthianhthu.jpg" alt="Avatar" class="team-avatar">
+                    </div>
+                    <h3 class="team-name">Trần Thị Anh Thư</h3>
+                    <div class="team-role">Content & Tester</div>
+                    <div class="team-mssv">MSSV: 24743741</div>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-avatar-wrap">
+                        <img src="assets/images/truonghoangthingoctoan.jpg" alt="Avatar" class="team-avatar">
+                    </div>
+                    <h3 class="team-name">Trương Hoàng Thị Ngọc Toàn</h3>
+                    <div class="team-role">Content & Tester</div>
+                    <div class="team-mssv">MSSV: 24740901</div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+  </main>
+
+  <div id="footer-root"></div>
+
+  <script src="assets/libs/jquery.min.js"></script>
+  <script src="assets/libs/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/core.js"></script> 
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const loader = document.getElementById('app-loading');
+      if (loader) setTimeout(() => { loader.style.opacity = '0'; setTimeout(() => loader.style.display = 'none', 400); }, 300);
+
+      if (window.injectLayout) injectLayout();
+      if (window.initHeader) initHeader();
+      if (window.Cart && Cart.updateBadge) Cart.updateBadge();
+    });
+  </script>
+</body>
+</html>

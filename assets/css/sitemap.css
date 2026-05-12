@@ -1,0 +1,83 @@
+/* ============================================================
+   VIORA — SITEMAP STYLES
+   ============================================================ */
+.sitemap-page-header {
+    text-align: center;
+    padding: 60px 0 40px;
+    background-color: #fcfcfc;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 50px;
+}
+
+.sitemap-page-title {
+    font-family: var(--font-display, 'Playfair Display', serif);
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #111;
+}
+
+.sitemap-subtitle {
+    font-size: 13px;
+    color: #666;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 10px;
+}
+
+/* Lưới sơ đồ */
+.sitemap-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    margin-bottom: 80px;
+}
+
+.sitemap-column h3 {
+    font-family: var(--font-display, 'Playfair Display', serif);
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #111;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 12px;
+}
+
+.sitemap-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sitemap-list li {
+    margin-bottom: 12px;
+}
+
+.sitemap-list a {
+    color: #555;
+    text-decoration: none;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.sitemap-list a:hover {
+    color: #c5a059; /* Vàng Gold Luxury */
+    transform: translateX(5px); /* Hiệu ứng trượt nhẹ sang phải */
+}
+
+/* Responsive cho điện thoại */
+@media (max-width: 991px) {
+    .sitemap-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 575px) {
+    .sitemap-grid {
+        grid-template-columns: 1fr;
+    }
+}

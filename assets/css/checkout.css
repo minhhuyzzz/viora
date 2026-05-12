@@ -1,0 +1,45 @@
+/* ============================================================
+   VIORA — CHECKOUT STYLES
+   ============================================================ */
+body { background-color: #fcfcfc; }
+
+/* Header thu gọn */
+.checkout-header { background: #fff; padding: 25px 0; border-bottom: 1px solid #eee; text-align: center; }
+.checkout-logo { font-family: var(--font-display); font-size: 28px; font-weight: 800; color: #000; text-decoration: none; letter-spacing: 4px; }
+
+/* Form Inputs */
+.chk-input { border: 1px solid #ddd; padding: 12px 15px; border-radius: 4px; font-size: 14px; width: 100%; transition: 0.3s; background: #fff; }
+.chk-input:focus { border-color: #000; outline: none; box-shadow: 0 0 0 1px #000; }
+.chk-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #555; margin-bottom: 8px; display: block; }
+
+/* Payment Methods */
+.payment-method { border: 1px solid #ddd; padding: 15px; border-radius: 4px; margin-bottom: 10px; cursor: pointer; transition: 0.3s; background: #fff; display: flex; align-items: center; gap: 12px; }
+.payment-method:hover { border-color: #000; }
+.payment-method input[type="radio"] { accent-color: #000; width: 18px; height: 18px; }
+.payment-icon { font-size: 24px; color: #000; margin-left: auto; }
+
+/* Order Summary (Cột bên phải) */
+.summary-box { background: #fff; border: 1px solid #eee; padding: 30px; border-radius: 4px; }
+
+.chk-item { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
+.chk-item-img-wrap { width: 65px; height: 85px; position: relative; border-radius: 4px; border: 1px solid #eee; background: #f9f9f9; }
+.chk-item-img { width: 100%; height: 100%; object-fit: cover; border-radius: 4px; }
+.chk-item-qty { position: absolute; top: -8px; right: -8px; background: #000; color: #fff; font-size: 11px; font-weight: bold; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; border-radius: 50%; }
+
+.chk-item-info { flex: 1; }
+.chk-item-name { font-weight: 600; font-size: 14px; margin-bottom: 4px; color: #000; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+/* Price Breakdown */
+.price-row { display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 12px; color: #555; }
+.price-row.total { font-size: 18px; font-weight: 700; color: #000; border-top: 1px solid #eee; padding-top: 20px; margin-top: 10px; }
+
+/* Nút bấm */
+.btn-place-order { background: #000; color: #fff; border: none; width: 100%; padding: 18px; font-size: 14px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; border-radius: 4px; transition: 0.3s; }
+.btn-place-order:hover { background: #333; }
+
+/* Success Modal */
+.success-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; display: none; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s; }
+.success-modal.show { display: flex; opacity: 1; }
+.success-box { background: #fff; padding: 50px 30px; border-radius: 8px; text-align: center; max-width: 450px; width: 90%; transform: translateY(20px); transition: 0.3s; }
+.success-modal.show .success-box { transform: translateY(0); }
+.success-icon { font-size: 60px; color: #28a745; margin-bottom: 20px; }

@@ -1,0 +1,135 @@
+/* ============================================================
+   VIORA — CONTACT US STYLES
+   ============================================================ */
+.contact-page-header {
+    text-align: center;
+    padding: 60px 0 40px;
+    background-color: #fcfcfc;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 60px;
+}
+
+.contact-page-title {
+    font-family: var(--font-display, 'Playfair Display', serif);
+    font-size: 42px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #111;
+}
+
+.contact-page-subtitle {
+    font-size: 14px;
+    color: #666;
+    letter-spacing: 1px;
+    margin-top: 15px;
+}
+
+/* Cột thông tin liên hệ */
+.contact-info-wrap {
+    padding-right: 40px;
+}
+
+.contact-info-block {
+    margin-bottom: 30px;
+}
+
+.contact-icon {
+    font-size: 24px;
+    color: #c5a059; /* Màu Vàng Gold */
+    margin-bottom: 15px;
+}
+
+.contact-info-title {
+    font-family: var(--font-display, 'Playfair Display', serif);
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.contact-info-text {
+    font-size: 15px;
+    color: #555;
+    line-height: 1.6;
+}
+
+.contact-info-text a {
+    color: #111;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+}
+.contact-info-text a:hover { color: #c5a059; }
+
+/* Form Liên hệ */
+.contact-form-wrap {
+    background: #fff;
+    padding: 40px;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+}
+
+.contact-form-title {
+    font-family: var(--font-display, 'Playfair Display', serif);
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+.ct-input {
+    width: 100%;
+    padding: 14px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: 0.3s;
+    background: #fdfdfd;
+    margin-bottom: 20px;
+}
+.ct-input:focus {
+    border-color: #111;
+    outline: none;
+    background: #fff;
+    box-shadow: 0 0 0 1px #111;
+}
+
+.btn-contact-submit {
+    background: #111;
+    color: #fff;
+    border: none;
+    padding: 16px 30px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: 0.3s;
+    cursor: pointer;
+    width: 100%;
+}
+.btn-contact-submit:hover { background: #333; }
+
+/* Bản đồ thu gọn bề ngang */
+.contact-map-wrap {
+    margin: 60px auto 0; /* 'auto' ở giữa giúp bản đồ tự động canh giữa trang */
+    width: 150%;
+    max-width: 900px; /* Ép bề ngang tối đa lại (có thể chỉnh 800px hoặc 1000px tùy ý bạn) */
+    height: 350px; 
+    background: #eee;
+    border-radius: 8px; 
+    overflow: hidden; 
+    filter: contrast(1.1);
+    transition: filter 0.5s;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+}
+
+.contact-map-wrap:hover {
+    filter: grayscale(0%);
+}
+
+@media (max-width: 991px) {
+    .contact-info-wrap { padding-right: 0; margin-bottom: 40px; }
+}
+
+.center-text {
+    text-align: center; }

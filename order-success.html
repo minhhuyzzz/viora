@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Đặt Hàng Thành Công — VIORA</title>
+  <meta name="description" content="VIORA — Thương hiệu thời trang & phụ kiện cao cấp Việt Nam."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="assets/libs/bootstrap.min.css"/>
+  <link rel="stylesheet" href="assets/css/main.css"/>
+  
+</head>
+<body>
+  <!-- Loading -->
+  <div id="app-loading">
+    <div class="loading-logo">VIORA</div>
+    <div class="loading-bar"><span></span></div>
+  </div>
+
+  <header id="site-header">
+    <a class="header-logo" href="index.html">VIORA</a>
+    <nav class="header-nav" aria-label="Menu chính"><div class="nav-item"><a class="nav-link" href="index.html">Trang Chủ</a></div><div class="nav-item">
+              <a class="nav-link has-dropdown" href="shop.html">Cửa Hàng ▾</a>
+              <div class="nav-dropdown" role="menu"><a href="shop.html?category=Dây chuyền">Dây Chuyền</a><a href="shop.html?category=Vòng tay">Vòng Tay</a><a href="shop.html?category=Áo">Áo</a><a href="shop.html?category=Váy">Váy</a><a href="shop.html?category=Quần">Quần</a><a href="shop.html?category=Set">Set</a><a href="shop.html?category=Túi xách">Túi Xách</a><a href="shop.html?category=Giày">Giày</a></div>
+            </div><div class="nav-item"><a class="nav-link" href="contact.html">Liên Hệ</a></div><div class="nav-item"><a class="nav-link" href="vip.html" style="color:var(--gold-dark)">✦ VIP Member</a></div></nav>
+    <div class="header-actions">
+      <button class="header-icon-btn" id="hdr-search" aria-label="Tìm kiếm">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      </button>
+      <button class="header-icon-btn" id="hdr-user" aria-label="Tài khoản" style="position:relative">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <span id="hdr-user-dot" style="position:absolute;top:.1rem;right:.1rem;width:.45rem;height:.45rem;border-radius:50%;background:var(--gold);display:none"></span>
+      </button>
+      <button class="header-icon-btn" id="hdr-cart" aria-label="Giỏ hàng" style="position:relative">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="cart-count" id="cart-count"></span>
+      </button>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-nav-overlay" id="mob-overlay"></div>
+    <nav class="mobile-nav" id="mob-nav">
+      <button class="mobile-nav-close" id="mob-close">✕</button>
+      <div style="font-family:var(--font-display);font-size:1.3rem;font-weight:700;letter-spacing:.35em;margin-bottom:1.8rem">VIORA</div>
+      <a class="nav-link" href="index.html">Trang Chủ</a>
+      <a class="nav-link" href="shop.html">Cửa Hàng</a>
+      <a class="mobile-cat-item" href="shop.html?category=Dây chuyền">Dây Chuyền</a><a class="mobile-cat-item" href="shop.html?category=Vòng tay">Vòng Tay</a><a class="mobile-cat-item" href="shop.html?category=Áo">Áo</a><a class="mobile-cat-item" href="shop.html?category=Váy">Váy</a><a class="mobile-cat-item" href="shop.html?category=Quần">Quần</a><a class="mobile-cat-item" href="shop.html?category=Set">Set</a><a class="mobile-cat-item" href="shop.html?category=Túi xách">Túi Xách</a><a class="mobile-cat-item" href="shop.html?category=Giày">Giày</a>
+      <a class="nav-link" href="contact.html">Liên Hệ</a>
+      <a class="nav-link" href="vip.html" style="color:var(--gold-dark)">✦ VIP Member</a>
+      <div style="margin-top:1.8rem">
+        <button class="btn-viora" onclick="openLoginModal()" style="width:100%;justify-content:center"><span>Đăng Nhập / Đăng Ký</span></button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Cart Sidebar -->
+  <div class="cart-overlay" id="cart-overlay" onclick="closeCartSidebar()"></div>
+  <aside class="cart-sidebar" id="cart-sidebar">
+    <div class="cart-header">
+      <div><div class="cart-header-title">Giỏ Hàng</div><div class="cart-header-count" id="cart-item-count">0 sản phẩm</div></div>
+      <button class="cart-close" onclick="closeCartSidebar()">✕</button>
+    </div>
+    <div class="cart-items" id="cart-list"></div>
+    <div class="cart-footer" id="cart-footer-area"></div>
+  </aside>
+
+  <!-- Login Modal -->
+  <div class="modal-backdrop-viora" id="modal-login">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeLoginModal()">✕</button>
+      <div class="modal-logo">VIORA</div>
+      <p class="modal-subtitle">Thời trang là ngôn ngữ của bạn</p>
+      <div style="display:flex;gap:.7rem;margin-bottom:1.5rem">
+        <button class="social-login-btn" onclick="showToast('Google login sắp ra mắt','info')"><span style="font-weight:800">G</span>&nbsp;Google</button>
+        <button class="social-login-btn" onclick="showToast('Facebook login sắp ra mắt','info')"><span style="font-weight:800">f</span>&nbsp;Facebook</button>
+      </div>
+      <div class="modal-divider"><span>hoặc</span></div>
+      <div class="modal-tabs">
+        <button class="modal-tab active" data-tab="login">Đăng Nhập</button>
+        <button class="modal-tab" data-tab="register">Đăng Ký</button>
+      </div>
+      <form class="modal-form-panel" data-form="login" id="login-form" novalidate>
+        <div class="form-group"><label class="form-label" for="login-email">Email</label><input class="form-input" id="login-email" type="email" placeholder="email@viora.vn" required/></div>
+        <div class="form-group" style="position:relative"><label class="form-label" for="login-pass">Mật Khẩu</label><input class="form-input" id="login-pass" type="password" placeholder="••••••••" style="padding-right:3rem" required/><button type="button" class="toggle-pass" data-target="login-pass">👁</button></div>
+        <div class="modal-form-footer"><label class="form-remember"><input type="checkbox" style="accent-color:var(--gold)"> Ghi nhớ</label><button type="button" class="form-forgot" onclick="showToast('Tính năng sắp ra mắt','info')">Quên mật khẩu?</button></div>
+        <button type="submit" class="btn-viora" style="width:100%;justify-content:center"><span>Đăng Nhập</span></button>
+        <p style="text-align:center;font-size:.75rem;color:var(--text-light);margin-top:1rem">Chưa có tài khoản? <button type="button" class="link-btn" data-switch-tab="register">Đăng ký ngay</button></p>
+      </form>
+      <form class="modal-form-panel" data-form="register" id="register-form" style="display:none" novalidate>
+        <div class="form-group"><label class="form-label" for="reg-name">Họ &amp; Tên *</label><input class="form-input" id="reg-name" type="text" placeholder="Nguyễn Thị An" required/></div>
+        <div class="form-group"><label class="form-label" for="reg-email">Email *</label><input class="form-input" id="reg-email" type="email" placeholder="email@viora.vn" required/></div>
+        <div class="form-group" style="position:relative"><label class="form-label" for="reg-pass">Mật Khẩu *</label><input class="form-input" id="reg-pass" type="password" placeholder="Tối thiểu 6 ký tự" style="padding-right:3rem" required/><button type="button" class="toggle-pass" data-target="reg-pass">👁</button></div>
+        <div class="form-group"><label class="form-label" for="reg-confirm">Xác Nhận *</label><input class="form-input" id="reg-confirm" type="password" placeholder="Nhập lại mật khẩu" required/></div>
+        <button type="submit" class="btn-viora" style="width:100%;justify-content:center;margin-top:.4rem"><span>Tạo Tài Khoản</span></button>
+        <p style="text-align:center;font-size:.75rem;color:var(--text-light);margin-top:1rem">Đã có tài khoản? <button type="button" class="link-btn" data-switch-tab="login">Đăng nhập</button></p>
+      </form>
+    </div>
+  </div>
+  <main>
+    <div style="padding-top:5rem;min-height:100vh;background:var(--bg);position:relative;overflow:hidden">
+      <div style="position:absolute;top:-8%;right:-6%;width:480px;height:480px;border-radius:50%;background:radial-gradient(ellipse,rgba(220,200,182,.18) 0%,transparent 70%);pointer-events:none"></div>
+      <div id="success-wrap" style="max-width:640px;margin:0 auto;padding:3.5rem 5vw 6rem;text-align:center;position:relative;z-index:1">
+        <div id="success-icon" style="width:5.2rem;height:5.2rem;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-dark));display:flex;align-items:center;justify-content:center;margin:0 auto 2rem;font-size:2rem;color:var(--white);animation:successPop .65s .15s cubic-bezier(.175,.885,.32,1.275) both;opacity:0">✓</div>
+        <p class="section-eyebrow" style="margin-bottom:.7rem">Đặt Hàng Thành Công</p>
+        <h1 style="font-family:var(--font-display);font-size:clamp(1.9rem,5vw,3rem);font-weight:700;color:var(--text-dark);line-height:1.15;margin-bottom:.9rem" id="success-title">Cảm ơn!</h1>
+        <p style="font-size:.88rem;color:var(--text-mid);line-height:1.9;margin-bottom:2.8rem;max-width:420px;margin-left:auto;margin-right:auto">Đơn hàng đã được xác nhận và đang xử lý. Chúng tôi sẽ gửi email xác nhận và thông báo khi hàng được giao.</p>
+        <div id="order-card" style="background:var(--white);padding:2.2rem;text-align:left;margin-bottom:1.4rem;box-shadow:var(--shadow-card)"></div>
+        <div id="timeline-card" style="background:var(--white);padding:1.9rem 2.2rem;text-align:left;margin-bottom:2.4rem;box-shadow:var(--shadow-card)"></div>
+        <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:2.5rem">
+          <a href="shop.html" class="btn-viora" style="padding:1rem 2.5rem"><span>Tiếp Tục Mua Sắm</span></a>
+          <a href="index.html" class="btn-outline-viora" style="padding:1rem 2.5rem"><span>Về Trang Chủ</span></a>
+        </div>
+        <p style="font-size:.76rem;color:var(--text-light)">Hỗ trợ 24/7: <a href="tel:1800123456" style="color:var(--gold-dark);font-weight:600">1800 123 456</a></p>
+      </div>
+    </div>
+  </main>
+  <style>@keyframes successPop{0%{opacity:0;transform:scale(0) rotate(-18deg)}70%{opacity:1;transform:scale(1.14) rotate(4deg)}100%{opacity:1;transform:scale(1) rotate(0)}}</style>
+
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div>
+        <span class="footer-brand-logo">VIORA</span>
+        <p class="footer-tagline">"Vì mỗi khoảnh khắc xứng đáng được mặc đẹp."</p>
+        <p class="footer-desc">Thương hiệu thời trang &amp; phụ kiện cao cấp Việt Nam. Swarovski chính hãng, thiết kế độc quyền.</p>
+        <div class="footer-socials">
+          <a href="#" class="social-link" aria-label="Facebook">f</a>
+          <a href="#" class="social-link" aria-label="Instagram">in</a>
+          <a href="#" class="social-link" aria-label="TikTok">tt</a>
+          <a href="#" class="social-link" aria-label="Pinterest">P</a>
+        </div>
+      </div>
+      <div>
+        <h3 class="footer-col-title">Sản Phẩm</h3>
+        <ul class="footer-links">
+          <li><a href="shop.html">Tất Cả</a></li>
+          <li><a href="shop.html?category=Dây chuyền">Dây Chuyền</a></li>
+          <li><a href="shop.html?category=Vòng tay">Vòng Tay</a></li>
+          <li><a href="shop.html?category=Áo">Áo</a></li>
+          <li><a href="shop.html?category=Váy">Váy</a></li>
+          <li><a href="shop.html?category=Giày">Giày</a></li>
+          <li><a href="shop.html?category=Túi xách">Túi Xách</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="footer-col-title">Hỗ Trợ</h3>
+        <ul class="footer-links">
+          <li><a href="contact.html">Liên Hệ</a></li>
+          <li><a href="#">Hướng Dẫn Size</a></li>
+          <li><a href="#">Đổi Trả</a></li>
+          <li><a href="#">Vận Chuyển</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+        <div style="margin-top:1.6rem">
+          <p style="font-size:.62rem;color:rgba(255,255,255,.3);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.45rem">Hotline</p>
+          <a href="tel:1800123456" style="font-family:var(--font-display);font-size:1.1rem;color:var(--gold);font-weight:600">1800 123 456</a>
+          <p style="font-size:.7rem;color:rgba(255,255,255,.3);margin-top:.25rem">T2–CN: 8:00–22:00</p>
+        </div>
+      </div>
+      <div>
+        <h3 class="footer-col-title">Về VIORA</h3>
+        <ul class="footer-links">
+          <li><a href="vip.html">✦ Thành Viên VIP</a></li>
+          <li><a href="#">Câu Chuyện Thương Hiệu</a></li>
+          <li><a href="#">Blog Thời Trang</a></li>
+          <li><a href="#">Tuyển Dụng</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 VIORA. Tất cả quyền được bảo lưu.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Chính Sách Bảo Mật</a>
+        <a href="#">Điều Khoản</a>
+        <a href="#" id="cookie-link">Cookie</a>
+      </div>
+    </div>
+  </footer>
+  <nav class="sitemap-strip" aria-label="Sitemap">
+    <div class="sitemap-strip-inner">
+      <strong style="color:rgba(255,255,255,.35);margin-right:.5rem">Sitemap:</strong>
+      <a href="index.html">Trang Chủ</a><span>·</span>
+      <a href="shop.html">Cửa Hàng</a><span>·</span>
+      <a href="shop.html?category=Dây chuyền">Dây Chuyền</a><span>·</span>
+      <a href="shop.html?category=Vòng tay">Vòng Tay</a><span>·</span>
+      <a href="shop.html?category=Áo">Áo</a><span>·</span>
+      <a href="shop.html?category=Váy">Váy</a><span>·</span>
+      <a href="shop.html?category=Giày">Giày</a><span>·</span>
+      <a href="shop.html?category=Túi xách">Túi Xách</a><span>·</span>
+      <a href="contact.html">Liên Hệ</a><span>·</span>
+      <a href="vip.html">VIP Member</a><span>·</span>
+      <a href="checkout.html">Thanh Toán</a>
+    </div>
+  </nav>
+  <script src="assets/libs/jquery.min.js"></script>
+  <script src="assets/libs/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/products-data.js"></script>
+  <script src="assets/js/viora.js"></script>
+  <script>
+    // Hide loading screen
+    window.addEventListener('load', function() {
+      var loader = document.getElementById('app-loading');
+      if (loader) { loader.classList.add('hide'); setTimeout(function(){loader.remove();},700); }
+    });
+    
+var PAY_LABELS={cod:"💵 Thanh toán khi nhận hàng",bank:"🏦 Chuyển khoản ngân hàng",momo:"💜 Ví MoMo",vnpay:"🔵 VNPay",zalopay:"🟦 ZaloPay"};
+function fmtP(n){return new Intl.NumberFormat("vi-VN",{style:"currency",currency:"VND"}).format(n);}
+function fmtStars(r){var h="";for(var i=1;i<=5;i++){if(i<=Math.floor(r))h+="<span class=\"star filled\">★</span>";else if(i-0.5<=r)h+="<span class=\"star half\">★</span>";else h+="<span class=\"star empty\">☆</span>";}return h;}
+
+(function(){
+  var params  = new URLSearchParams(window.location.search);
+  var orderId = params.get("order")  || "VIORA00000000";
+  var total   = parseFloat(params.get("total") || 0);
+  var payment = params.get("payment")|| "cod";
+  var name    = decodeURIComponent(params.get("name") || "bạn");
+
+  document.getElementById("success-title").innerHTML = "Cảm ơn, <em style=\"color:var(--gold-dark);font-style:italic\">" + name + "!</em>";
+
+  var eta=new Date(); eta.setDate(eta.getDate()+4);
+  var etaStr=eta.toLocaleDateString("vi-VN",{weekday:"long",day:"numeric",month:"long"});
+
+  document.getElementById("order-card").innerHTML =
+    "<div style=\"display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1rem;padding-bottom:1.4rem;border-bottom:1px solid var(--beige);margin-bottom:1.4rem\">" +
+      "<div><p style=\"font-size:.6rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--text-light);margin-bottom:.28rem\">Mã Đơn Hàng</p><p style=\"font-family:var(--font-display);font-size:1.25rem;font-weight:700;color:var(--text-dark)\">#"+orderId+"</p></div>" +
+      "<div style=\"text-align:right\"><p style=\"font-size:.6rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--text-light);margin-bottom:.28rem\">Tổng Thanh Toán</p><p style=\"font-size:1.35rem;font-weight:700;color:var(--gold-dark)\">"+fmtP(total)+"</p></div>" +
+    "</div>" +
+    "<div style=\"display:grid;grid-template-columns:1fr 1fr;gap:1.4rem\">" +
+      "<div><p style=\"font-size:.6rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--text-light);margin-bottom:.35rem\">Phương Thức TT</p><p style=\"font-size:.85rem;color:var(--text-dark)\">"+(PAY_LABELS[payment]||payment)+"</p></div>" +
+      "<div><p style=\"font-size:.6rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--text-light);margin-bottom:.35rem\">Dự Kiến Nhận</p><p style=\"font-size:.85rem;color:var(--text-dark)\">"+etaStr+"</p></div>" +
+    "</div>" +
+    (payment==="bank"?"<div style=\"margin-top:1.4rem;padding:.95rem 1.1rem;background:var(--bg-alt);border-left:3px solid var(--gold);font-size:.78rem;color:var(--text-mid);line-height:2\">" +
+      "<strong>⚠️ Vui lòng chuyển khoản để xác nhận đơn:</strong><br>STK: <strong>9988 7766 5544 — Techcombank — CONG TY TNHH VIORA</strong><br>Nội dung: <strong>VIORA "+orderId+"</strong></div>":"");
+
+  var steps=[
+    {label:"Đơn Hàng Đã Xác Nhận",time:"Vừa xong",done:true},
+    {label:"Đang Chuẩn Bị Hàng",time:"1–2 giờ",done:false},
+    {label:"Giao Cho Đơn Vị Vận Chuyển",time:"1–2 ngày",done:false},
+    {label:"Giao Đến Tay Bạn",time:etaStr,done:false}
+  ];
+  var tHtml = "<p style=\"font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--text-dark);margin-bottom:1.4rem\">Theo Dõi Đơn Hàng</p>";
+  steps.forEach(function(s,i){
+    tHtml += "<div style=\"display:flex;gap:1rem;"+(i<steps.length-1?"padding-bottom:1.1rem":"")+"\">" +
+      "<div style=\"display:flex;flex-direction:column;align-items:center\">" +
+        "<div style=\"width:1.75rem;height:1.75rem;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;background:"+(s.done?"var(--gold-dark)":"var(--bg-alt)")+";color:"+(s.done?"var(--white)":"var(--text-light)")+"\">"+(s.done?"✓":"○")+"</div>" +
+        (i<steps.length-1?"<div style=\"width:1px;flex:1;min-height:.8rem;background:"+(s.done?"var(--gold-dark)":"var(--beige)")+"\"></div>":"") +
+      "</div>" +
+      "<div style=\"padding-top:.28rem\"><div style=\"font-size:.83rem;font-weight:"+(s.done?700:400)+";color:"+(s.done?"var(--text-dark)":"var(--text-light)")+"\">"+s.label+"</div><div style=\"font-size:.72rem;color:var(--text-light);margin-top:.1rem\">"+s.time+"</div></div>" +
+    "</div>";
+  });
+  document.getElementById("timeline-card").innerHTML = tHtml;
+
+  // Confetti
+  runConfetti();
+})();
+
+function runConfetti(){
+  var canvas=document.createElement("canvas");
+  canvas.style.cssText="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9998";
+  document.body.appendChild(canvas);
+  var ctx=canvas.getContext("2d");
+  canvas.width=window.innerWidth; canvas.height=window.innerHeight;
+  var COLORS=["#D4B483","#E8D5CF","#DCC8B6","#FCF8F3","#111111","#D4B483"];
+  var pieces=Array.from({length:80},function(){return{x:Math.random()*canvas.width,y:Math.random()*-canvas.height*.5,w:Math.random()*9+4,h:Math.random()*5+3,color:COLORS[Math.floor(Math.random()*COLORS.length)],speed:Math.random()*3+1.4,angle:Math.random()*360,spin:(Math.random()-.5)*4.5,swX:Math.random()*2-1};});
+  var frame=0;
+  function run(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    pieces.forEach(function(p){
+      p.y+=p.speed; p.x+=Math.sin(frame*.024+p.swX)*.65; p.angle+=p.spin;
+      ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.angle*Math.PI/180);
+      ctx.fillStyle=p.color; ctx.globalAlpha=Math.max(0,Math.min(1,(canvas.height-p.y)/canvas.height*3));
+      ctx.fillRect(-p.w/2,-p.h/2,p.w,p.h); ctx.restore();
+      if(p.y>canvas.height+20)p.y=-20;
+    });
+    frame++;
+    if(frame<220)requestAnimationFrame(run);
+    else{canvas.style.transition="opacity .5s";canvas.style.opacity=0;setTimeout(function(){canvas.remove();},600);}
+  }
+  setTimeout(run,250);
+}
+
+  </script>
+</body>
+</html>

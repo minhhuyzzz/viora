@@ -1,0 +1,215 @@
+/* ============================================================
+   VIORA — PREMIUM AUTH STYLES
+   ============================================================ */
+   :root {
+    --viora-gold: #c5a059;
+    --viora-black: #111111;
+    --viora-gray: #f8f8f8;
+}
+
+body { background-color: var(--viora-gray); }
+
+body.auth-page-body {
+    padding-top: 52px;
+}
+
+/* Thanh quay về trang chủ */
+.auth-back-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    min-height: 52px;
+    padding: 0 20px;
+    background: #fff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+}
+
+.auth-back-bar__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--viora-black);
+    text-decoration: none;
+    transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+.auth-back-bar__link:hover {
+    color: var(--viora-gold);
+    opacity: 0.92;
+}
+
+.auth-back-bar__link i {
+    font-size: 10px;
+    opacity: 0.85;
+}
+
+.auth-page-wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column; /* FIX 1: Ép nội dung xếp dọc từ trên xuống */
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+}
+
+.auth-card {
+    background: #fff;
+    width: 100%;
+    max-width: 420px;
+    padding: 50px 40px;
+    border-radius: 2px; 
+    box-shadow: 0 20px 60px rgba(0,0,0,0.05);
+    border: 1px solid rgba(0,0,0,0.03);
+}
+
+.auth-header {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.auth-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 6px;
+    color: var(--viora-black);
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.auth-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--viora-black);
+    margin-bottom: 8px;
+}
+
+.auth-subtitle {
+    font-size: 13px;
+    color: #888;
+    letter-spacing: 0.5px;
+    margin-bottom: 30px;
+}
+
+/* Input Fields - Tinh chỉnh tinh tế */
+.auth-input-group { margin-bottom: 20px; }
+
+.auth-input {
+    width: 100%;
+    padding: 15px 0;
+    border: none;
+    border-bottom: 1px solid #e0e0e0;
+    background: transparent;
+    font-size: 14px;
+    transition: all 0.4s ease;
+    border-radius: 0;
+}
+
+.auth-input:focus {
+    outline: none;
+    border-bottom-color: var(--viora-black);
+    padding-left: 5px; 
+}
+
+/* Nút bấm Premium */
+.btn-auth-submit {
+    background: var(--viora-black);
+    color: #fff;
+    width: 100%;
+    padding: 16px;
+    border: none;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 15px;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-auth-submit:hover {
+    background: #333;
+    letter-spacing: 3px; 
+}
+
+/* Social Login */
+.social-login-grid {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.btn-social {
+    flex: 1;
+    height: 45px;
+    border: 1px solid #eee;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.btn-social:hover {
+    border-color: #000;
+    background: #fafafa;
+}
+
+.btn-social img { width: 18px; opacity: 0.8; }
+
+.auth-divider {
+    text-align: center;
+    font-size: 11px;
+    color: #bbb;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 25px 0;
+    position: relative;
+}
+
+.auth-divider::before, .auth-divider::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 35%;
+    height: 1px;
+    background: #eee;
+}
+.auth-divider::before { left: 0; }
+.auth-divider::after { right: 0; }
+
+.auth-footer-links {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 13px;
+}
+
+.auth-footer-links a {
+    color: var(--viora-black);
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px solid #ddd;
+}
+
+/* FIX 2: THÊM LẠI LOGIC ẨN HIỆN FORM CỰC KỲ QUAN TRỌNG */
+.auth-view { 
+    display: none; 
+}
+
+.auth-view.active { 
+    display: block; 
+    animation: fadeIn 0.4s ease; 
+}

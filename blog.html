@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tạp Chí Thời Trang — VIORA LUXURY</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  
+  <link rel="stylesheet" href="assets/libs/bootstrap.min.css"/>
+  <link rel="stylesheet" href="assets/libs/fontawesome/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/main.css"/>
+  <link rel="stylesheet" href="assets/css/blog.css"> </head>
+<body>
+  <div id="app-loading" style="transition: opacity 0.4s;"><div class="loading-logo">VIORA</div></div>
+
+  <div id="header-root"></div>
+  <div style="height: 60px;"></div>
+
+  <header class="blog-page-header">
+    <div class="container">
+        <h1 class="blog-page-title">Tạp chí VIORA</h1>
+        <p class="blog-page-subtitle">Định hình phong cách · Kiến tạo xu hướng</p>
+    </div>
+  </header>
+
+  <main class="container pb-5 mb-5" style="max-width: 1300px;">
+    <nav class="breadcrumb-bar" aria-label="Breadcrumb">
+      <a href="index.html" class="text-muted text-decoration-none small text-uppercase letter-spacing-1">Trang Chủ</a> <span class="text-muted mx-2">›</span>
+      <span class="small text-uppercase letter-spacing-1" style="color:var(--gold)">Tạp Chí VIORA</span>
+    </nav>
+    
+    <div class="editorial-grid">
+        
+        <a href="article.html" class="editorial-card">
+            <img src="assets/images/v1.jpg" alt="Swarovski" class="editorial-img">
+            <div class="editorial-overlay">
+                <div class="editorial-category">TRANG SỨC TINH TẾ</div>
+                <h2 class="editorial-title">Lấp lánh cùng Swarovski: Chọn vòng tay, dây chuyền thế nào cho chuẩn "Gu"?</h2>
+                <div class="editorial-author">BỞI VIORA EDITORIAL</div>
+            </div>
+        </a>
+
+        <a href="article-lua-to-tam.html" class="editorial-card">
+            <img src="assets/images/bv8.jpg" alt="Lụa Tơ Tằm" class="editorial-img">
+            <div class="editorial-overlay">
+                <div class="editorial-category">CHẤT LIỆU CAO CẤP</div>
+                <h2 class="editorial-title">Bí mật đằng sau sự mềm mại của Lụa Tơ Tằm Thượng Hạng</h2>
+                <div class="editorial-author">BỞI VIORA EDITORIAL</div>
+            </div>
+        </a>
+
+        <a href="article-minimalism.html" class="editorial-card">
+            <img src="assets/images/bv1.jpg" alt="Minimalism" class="editorial-img">
+            <div class="editorial-overlay">
+                <div class="editorial-category">BÍ QUYẾT PHỐI ĐỒ</div>
+                <h2 class="editorial-title">Nghệ thuật Minimalism: Ít hơn nhưng đẳng cấp hơn</h2>
+                <div class="editorial-author">Tác giả: VIORA Editorial</div>
+            </div>
+        </a>
+
+        <a href="article-capsule.html" class="editorial-card">
+            <img src="assets/images/bv2.jpg" alt="Capsule Wardrobe" class="editorial-img">
+            <div class="editorial-overlay">
+                <div class="editorial-category">VẺ ĐẸP NGUYÊN BẢN</div>
+                <h2 class="editorial-title">Vẻ Đẹp Nguyên Bản Của Natural Linen: Bản Tình Ca Mùa Hè</h2>
+                <div class="editorial-author">Tác giả: VIORA Editorial</div>
+            </div>
+        </a>
+
+        <a href="article-bao-quan.html" class="editorial-card">
+            <img src="assets/images/bv3.jpg" alt="Bảo quản trang sức" class="editorial-img">
+            <div class="editorial-overlay">
+                <div class="editorial-category">CHĂM SÓC SẢN PHẨM</div>
+                <h2 class="editorial-title">Những sai lầm kinh điển khi bảo quản Trang Sức Xa Xỉ</h2>
+                <div class="editorial-author">Tác giả: VIORA Editorial</div>
+            </div>
+        </a>
+
+        <a href="article-egyptian-cotton.html" class="editorial-card">
+            <img src="assets/images/bv9.jpg" alt="Nhẫn đính hôn" class="editorial-img">
+            <div class="editorial-overlay">
+                <div class="editorial-category">CHẤT LIỆU</div>
+                <h2 class="editorial-title">Quyền năng của Egyptian Cotton: Định chuẩn lại sự hoàn hảo</h2>
+                <div class="editorial-author">Tác giả: VIORA Editorial</div>
+            </div>
+        </a>
+
+    </div>
+
+    <div class="text-center mt-5 pt-4">
+        <a href="#" class="btn btn-outline-dark px-5 py-3 rounded-0 fw-bold letter-spacing-1">XEM THÊM BÀI VIẾT</a>
+    </div>
+
+  </main>
+
+  <div id="footer-root"></div>
+
+  <script src="assets/libs/jquery.min.js"></script>
+  <script src="assets/libs/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/core.js"></script> 
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const loader = document.getElementById('app-loading');
+      if (loader) setTimeout(() => { loader.style.opacity = '0'; setTimeout(() => loader.style.display = 'none', 400); }, 300);
+      if (window.injectLayout) injectLayout();
+      if (window.initHeader) initHeader();
+      if (window.Cart && Cart.updateBadge) Cart.updateBadge();
+    });
+  </script>
+</body>
+</html>

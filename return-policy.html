@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chính sách đổi trả — VIORA LUXURY</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="assets/libs/bootstrap.min.css"/>
+  <link rel="stylesheet" href="assets/libs/fontawesome/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/main.css"/>
+  <link rel="stylesheet" href="assets/css/article.css">
+</head>
+<body>
+  <div id="app-loading" style="transition: opacity 0.4s;"><div class="loading-logo">VIORA</div></div>
+
+  <div id="header-root"></div>
+  <div style="height: 60px;"></div>
+
+  <main class="article-page">
+    <div class="container">
+      <header class="article-header">
+        <h1 class="article-title">Chính Sách Đổi Trả</h1>
+        <div class="article-meta">
+          <span>Cập nhật lần cuối: 12 Tháng 5, 2026</span>
+        </div>
+      </header>
+
+      <article class="article-content">
+        <p class="drop-cap">
+          Sự hài lòng của khách hàng là ưu tiên hàng đầu tại VIORA. Nếu bạn không hoàn toàn ưng ý với sản phẩm đã nhận, chúng tôi sẵn sàng hỗ trợ bạn đổi sang sản phẩm khác hoặc hoàn tiền theo các điều khoản quy định dưới đây.
+        </p>
+
+        <h2>1. Điều kiện áp dụng đổi trả</h2>
+        <p>Để sản phẩm được chấp nhận đổi/trả, vui lòng đảm bảo các yêu cầu sau:</p>
+        <ul>
+          <li>Sản phẩm được gửi lại trong vòng <strong>07 ngày</strong> kể từ ngày nhận hàng.</li>
+          <li>Sản phẩm còn trong tình trạng ban đầu, chưa qua sử dụng, giặt ủi hoặc chỉnh sửa.</li>
+          <li>Còn nguyên tem mác, niêm phong (đối với nước hoa/mỹ phẩm) và đầy đủ phụ kiện, hộp, túi vải đi kèm.</li>
+          <li>Có hóa đơn mua hàng hoặc biên nhận gửi kèm.</li>
+        </ul>
+
+        <h2>2. Các sản phẩm KHÔNG áp dụng đổi trả</h2>
+        <p>Vì lý do vệ sinh và tính chất đặc thù, các sản phẩm sau sẽ không được hỗ trợ đổi trả (trừ trường hợp lỗi từ nhà sản xuất):</p>
+        <ul>
+          <li>Đồ lót, đồ bơi, tất (vớ).</li>
+          <li>Khuyên tai và các loại trang sức xỏ khuyên.</li>
+          <li>Sản phẩm được đặt làm riêng (Custom-made) hoặc đã qua chỉnh sửa theo số đo cá nhân.</li>
+          <li>Sản phẩm mua trong các chương trình Giảm giá sâu (Clearance Sale) từ 50% trở lên.</li>
+        </ul>
+
+        <h2>3. Quy trình thực hiện</h2>
+        <p>
+          <strong>Bước 1:</strong> Liên hệ với bộ phận CSKH qua số Hotline hoặc Email để cung cấp mã đơn hàng và lý do đổi/trả.<br>
+          <strong>Bước 2:</strong> Đóng gói sản phẩm cẩn thận cùng các phụ kiện đi kèm.<br>
+          <strong>Bước 3:</strong> Gửi bưu kiện về địa chỉ kho của VIORA theo hướng dẫn từ nhân viên CSKH.<br>
+          <strong>Bước 4:</strong> Sau khi nhận và kiểm định sản phẩm (thường mất 2-3 ngày làm việc), chúng tôi sẽ tiến hành đổi sản phẩm mới hoặc hoàn tiền cho bạn.
+        </p>
+
+        <h2>4. Chi phí vận chuyển</h2>
+        <p>
+          - <strong>Miễn phí</strong> đổi trả nếu sản phẩm bị lỗi do nhà sản xuất hoặc do VIORA giao sai hàng.<br>
+          - Trong trường hợp bạn muốn đổi size/mẫu mã theo ý thích cá nhân, phí vận chuyển hai chiều sẽ do khách hàng tự chi trả.
+        </p>
+      </article>
+    </div>
+  </main>
+
+  <div id="footer-root"></div>
+
+  <script src="assets/libs/jquery.min.js"></script>
+  <script src="assets/libs/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/core.js"></script> 
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const loader = document.getElementById('app-loading');
+      if (loader) setTimeout(() => { loader.style.opacity = '0'; setTimeout(() => loader.style.display = 'none', 400); }, 300);
+      if (window.injectLayout) injectLayout();
+      if (window.initHeader) initHeader();
+      if (window.Cart && Cart.updateBadge) Cart.updateBadge();
+    });
+  </script>
+</body>
+</html>

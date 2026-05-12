@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cửa Hàng — VIORA LUXURY</title>
+  <link rel="stylesheet" href="assets/libs/bootstrap.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/main.css"/>
+  <link rel="stylesheet" href="assets/css/shop.css">
+</head>
+<body>
+  <div id="app-loading"><div class="loading-logo">VIORA</div></div>
+
+  <div id="header-root"></div>
+
+  <main class="viora-shop-main">
+    <nav class="breadcrumb-bar container" aria-label="Breadcrumb" style="max-width:1400px; padding:0 5vw">
+      <a href="index.html" class="text-muted text-decoration-none small text-uppercase letter-spacing-1">Trang Chủ</a> <span class="text-muted mx-2">›</span>
+      <span class="small text-uppercase letter-spacing-1" style="color:var(--gold)">Cửa Hàng</span>
+    </nav>
+
+    <section class="shop-hero-v2">
+      <div class="container text-center">
+        <h1 class="premium-font" id="shop-title">Tất Cả<br><em>Sản Phẩm</em></h1>
+      </div>
+    </section>
+
+    <section class="facets-container py-3 border-bottom bg-white">
+      <div class="container">
+          <form id="FacetFiltersForm" class="facets__form d-flex align-items-center flex-wrap gap-4">
+              
+              <div class="facets__wrapper d-flex align-items-center gap-3">
+                  <h2 class="facets__heading mb-0">Bộ lọc:</h2>
+  
+                  <details class="facets__disclosure">
+                      <summary class="facets__summary">
+                          <span>Trang Phục</span>
+                          <svg class="icon-caret" viewBox="0 0 10 6"><path fill="currentColor" d="M9.354.646a.5.5 0 0 0-.708 0L5 4.293 1.354.646a.5.5 0 0 0-.708.708l4 4a.5.5 0 0 0 .708 0l4-4a.5.5 0 0 0 0-.708"></path></svg>
+                      </summary>
+                      <div class="facets__display">
+                          <div class="facets__header">
+                              <span class="facets__selected">Chọn loại đồ</span>
+                              <a href="javascript:void(0)" class="facets__reset" onclick="clearFilterGroup('category')">Đặt lại</a>
+                          </div>
+                          <ul class="facets__list list-unstyled">
+                              <li><label class="facet-checkbox"><input type="checkbox" name="category" value="Áo" onchange="renderShop()"><span>Áo Sơ mi & Polo</span></label></li>
+                              <li><label class="facet-checkbox"><input type="checkbox" name="category" value="Áo khoác" onchange="renderShop()"><span>Áo Khoác Dù</span></label></li>
+                              <li><label class="facet-checkbox"><input type="checkbox" name="category" value="Đầm" onchange="renderShop()"><span>Váy & Đầm</span></label></li>
+                              <li><label class="facet-checkbox"><input type="checkbox" name="category" value="Quần" onchange="renderShop()"><span>Quần Tây / Jean</span></label></li>
+                          </ul>
+                      </div>
+                  </details>
+  
+                  <details class="facets__disclosure">
+                      <summary class="facets__summary">
+                          <span>Phụ Kiện</span>
+                          <svg class="icon-caret" viewBox="0 0 10 6"><path fill="currentColor" d="M9.354.646a.5.5 0 0 0-.708 0L5 4.293 1.354.646a.5.5 0 0 0-.708.708l4 4a.5.5 0 0 0 .708 0l4-4a.5.5 0 0 0 0-.708"></path></svg>
+                      </summary>
+                      <div class="facets__display">
+                          <div class="facets__header">
+                              <span class="facets__selected">Trang sức & Túi</span>
+                              <a href="javascript:void(0)" class="facets__reset" onclick="clearFilterGroup('category')">Đặt lại</a>
+                          </div>
+                          <ul class="facets__list list-unstyled">
+                              <li><label class="facet-checkbox"><input type="checkbox" name="category" value="Dây chuyền" onchange="renderShop()"><span>Dây Chuyền</span></label></li>
+                              <li><label class="facet-checkbox"><input type="checkbox" name="category" value="Vòng tay" onchange="renderShop()"><span>Vòng Tay</span></label></li>
+                              <li><label class="facet-checkbox"><input type="checkbox" name="category" value="Túi xách" onchange="renderShop()"><span>Túi Xách Da</span></label></li>
+                              <li><label class="facet-checkbox"><input type="checkbox" name="category" value="Giày" onchange="renderShop()"><span>Giày Cao Cấp</span></label></li>
+                          </ul>
+                      </div>
+                  </details>
+  
+                  <div class="shop-search-facets ms-2">
+                      <div class="search-viora-input-wrap">
+                          <input type="text" id="prod-search" placeholder="Tìm sản phẩm..." oninput="searchProducts(this.value)">
+                          <i class="fa-solid fa-magnifying-glass"></i>
+                      </div>
+                  </div>
+              </div>
+  
+              <div class="facet-filters ms-auto d-flex align-items-center gap-3">
+                  <select id="SortBy" class="facets__sort" onchange="sortProducts(this.value)">
+                      <option value="default">Mới nhất</option>
+                      <option value="price-asc">Giá: Thấp → Cao</option>
+                      <option value="price-desc">Giá: Cao → Thấp</option>
+                      <option value="name-asc">Tên: A - Z</option>
+                  </select>
+                  <div class="product-count-viora ps-3 border-start">
+                      <span id="ProductCountDesktop">0 sản phẩm</span>
+                  </div>
+                  <button type="button" class="btn-reset-all" onclick="resetAllFilters()">LÀM MỚI</button>
+              </div>
+          </form>
+      </div>
+  </section>
+    <section class="container py-5">
+      <div id="result-info" class="result-count-label"></div>
+      <div class="products-grid" id="prod-grid"></div>
+      <div id="pagination-wrap" class="mt-5 d-flex justify-content-center"></div>
+      <div id="empty-state" style="display:none;" class="text-center py-5">
+        <h2 class="premium-font">Không tìm thấy sản phẩm</h2>
+        <button class="btn-viora mt-3" onclick="resetAllFilters()"><span>Xem Lại Tất Cả</span></button>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-root"></div>
+
+  <script src="assets/libs/jquery.min.js"></script>
+  <script src="assets/js/products-data.js"></script>
+  <script src="assets/js/core.js"></script>
+  
+  <script>
+    // 1. Khai báo biến khởi tạo
+    var _query = "", _sort = "default", _page = 1, PER_PAGE = 12;
+
+    $(document).ready(function() {
+        // Nạp Header/Footer (Nếu Huy dùng hàm trong core.js)
+        if (window.initHeader) initHeader();
+        if (window.initFooter) initFooter();
+
+        // Kiểm tra xem trên URL có yêu cầu lọc category nào không (Ví dụ: shop.html?category=Áo)
+        var params = new URLSearchParams(window.location.search);
+        var catParam = params.get("category");
+        if (catParam) {
+            if (catParam === "Váy") {
+                $('input[name="category"][value="Đầm"]').prop("checked", true);
+            } else {
+                $('input[name="category"]').filter(function () { return $(this).val() === catParam; }).prop("checked", true);
+            }
+        }
+        var catSlug = params.get("cat");
+        if (catSlug) {
+            var slugToValue = {
+                "ao-khoac": "Áo khoác", ao: "Áo", dam: "Đầm", quan: "Quần",
+                "day-chuyen": "Dây chuyền", "vong-tay": "Vòng tay", "tui-xach": "Túi xách", giay: "Giày"
+            };
+            var v = slugToValue[String(catSlug).toLowerCase()];
+            if (v) $('input[name="category"][value="' + v + '"]').prop("checked", true);
+        }
+
+        var qParam = params.get("q");
+        if (qParam) {
+            _query = qParam.trim();
+            $('#prod-search').val(_query);
+        }
+
+        renderShop();
+        setTimeout(() => $('#app-loading').fadeOut(), 400);
+    });
+
+    // 2. Hàm Render chính - Lấy dữ liệu từ file products-data.js
+    function renderShop() {
+        // Lấy các category đang được tích chọn
+        var selectedCats = [];
+        $('input[name="category"]:checked').each(function() {
+            selectedCats.push($(this).val());
+        });
+
+        // Lọc dữ liệu
+        var list = VIORA_PRODUCTS.filter(function(p) {
+            // Lọc theo Category: Nếu không chọn gì thì hiện hết, nếu chọn thì phải khớp
+            // Mẹo: Nếu p.category là "Đầm" mà khách chọn "Váy" thì vẫn cho qua (Huy nên sửa data cho khớp)
+            var categoryToMatch = p.category;
+            if (categoryToMatch === "Đầm") categoryToMatch = "Váy"; 
+            
+            var matchCat = (selectedCats.length === 0 || selectedCats.includes(p.category) || selectedCats.includes(categoryToMatch));
+            
+            // Lọc theo Tìm kiếm (tên, danh mục, mô tả)
+            var q = _query.toLowerCase().trim();
+            var matchSearch = (_query === "" || (
+                p.name.toLowerCase().includes(q) ||
+                (p.category && p.category.toLowerCase().includes(q)) ||
+                (p.description && p.description.toLowerCase().includes(q))
+            ));
+            
+            return matchCat && matchSearch;
+        });
+
+        // Sắp xếp
+        if (_sort === "price-asc") list.sort((a,b) => parsePrice(a.price) - parsePrice(b.price));
+        if (_sort === "price-desc") list.sort((a,b) => parsePrice(b.price) - parsePrice(a.price));
+        if (_sort === "name-asc") list.sort((a,b) => a.name.localeCompare(b.name));
+
+        // Tính toán phân trang
+        var total = list.length;
+        var pages = Math.ceil(total / PER_PAGE) || 1;
+        if (_page > pages) _page = pages;
+
+        $("#ProductCountDesktop").text(total.toLocaleString("vi-VN") + " sản phẩm");
+        $("#empty-state").css("display", total === 0 ? "block" : "none");
+        $("#prod-grid").css("display", total === 0 ? "none" : "");
+        $("#pagination-wrap").css("display", total === 0 ? "none" : "");
+        
+        var data = list.slice((_page - 1) * PER_PAGE, _page * PER_PAGE);
+        var grid = document.getElementById("prod-grid");
+
+        
+        // Vẽ sản phẩm ra màn hình
+        grid.innerHTML = data.map(p => `
+            <article class="product-card-v2" onclick="location.href='product-detail.html?id=${p.id}'">
+                <div class="p-img-wrap">
+                    ${p.tag ? `<span class="p-badge">${p.tag}</span>` : ''}
+                    <img src="${imgSrc(p.images[0])}" class="p-img" alt="${p.name}" onerror="this.src='assets/images/placeholder.jpg'">
+                    <div class="p-quick-add">+ THÊM VÀO GIỎ</div>
+                </div>
+                <div class="p-info pt-3">
+                    <span class="p-cat">${p.category}</span>
+                    <h3 class="p-name">${p.name}</h3>
+                    <p class="p-desc">${p.description || "Sản phẩm thiết kế độc quyền từ Viora Luxury."}</p>
+                    <div class="p-price">${formatPrice(parsePrice(p.price))}</div>
+                </div>
+            </article>`).join('');
+
+        renderPagination(pages);
+    }
+
+    // 3. Hàm vẽ nút phân trang
+    function renderPagination(totalPages) {
+        var wrap = $('#pagination-wrap');
+        if (totalPages <= 1) { wrap.empty(); return; }
+        
+        let html = '<nav class="pagination">';
+        for (let i = 1; i <= totalPages; i++) {
+            html += `<button class="p-btn ${i === _page ? 'active' : ''}" onclick="goPage(${i})">${i}</button>`;
+        }
+        html += '</nav>';
+        wrap.html(html);
+    }
+
+    // 4. Các hàm xử lý sự kiện (Bắt buộc phải có để các nút bấm hoạt động)
+    function goPage(n) {
+        _page = n;
+        renderShop();
+        window.scrollTo({ top: 400, behavior: 'smooth' });
+    }
+
+    function searchProducts(val) {
+        _query = val.trim();
+        _page = 1;
+        renderShop();
+    }
+
+    function sortProducts(val) {
+        _sort = val;
+        _page = 1;
+        renderShop();
+    }
+
+    function clearFilterGroup(name) {
+        $(`input[name="${name}"]`).prop('checked', false);
+        _page = 1;
+        renderShop();
+    }
+
+    function resetAllFilters() {
+        $('input[type="checkbox"]').prop('checked', false);
+        $('#prod-search').val('');
+        _query = "";
+        _sort = "default";
+        _page = 1;
+        renderShop();
+    }
+    
+    // Hàm xóa filter trong từng ô Details
+    function clearThisFilter(el) {
+        $(el).closest('details').find('input[type="checkbox"]').prop('checked', false);
+        renderShop();
+    }
+</script>
+</body>
+</html>

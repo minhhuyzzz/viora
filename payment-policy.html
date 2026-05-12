@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chính sách thanh toán — VIORA LUXURY</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="assets/libs/bootstrap.min.css"/>
+  <link rel="stylesheet" href="assets/libs/fontawesome/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/main.css"/>
+  <link rel="stylesheet" href="assets/css/article.css">
+</head>
+<body>
+  <div id="app-loading" style="transition: opacity 0.4s;"><div class="loading-logo">VIORA</div></div>
+
+  <div id="header-root"></div>
+  <div style="height: 60px;"></div>
+
+  <main class="article-page">
+    <div class="container">
+      <header class="article-header">
+        <h1 class="article-title">Chính Sách Thanh Toán</h1>
+        <div class="article-meta">
+          <span>Cập nhật lần cuối: 12 Tháng 5, 2026</span>
+        </div>
+      </header>
+
+      <article class="article-content">
+        <p>
+          VIORA LUXURY cung cấp nhiều phương thức thanh toán đa dạng, an toàn và bảo mật nhằm mang lại trải nghiệm mua sắm tiện lợi nhất cho quý khách. Tất cả các giao dịch đều được thực hiện bằng Đồng Việt Nam (VNĐ).
+        </p>
+
+        <h2>1. Thanh toán khi nhận hàng (COD)</h2>
+        <p>
+          Với phương thức COD (Cash On Delivery), quý khách có thể thanh toán trực tiếp bằng tiền mặt cho nhân viên giao hàng ngay khi nhận được bưu kiện. Phương thức này áp dụng cho mọi đơn hàng trên toàn quốc. Tuy nhiên, đối với một số đơn hàng có giá trị rất lớn, VIORA có thể sẽ liên hệ để yêu cầu đặt cọc trước một phần.
+        </p>
+
+        <h2>2. Chuyển khoản ngân hàng</h2>
+        <p>
+          Quý khách có thể thanh toán trước thông qua hình thức chuyển khoản Internet Banking. Sau khi đặt hàng thành công, hệ thống sẽ hiển thị thông tin tài khoản ngân hàng của VIORA. 
+        </p>
+        <p>
+          Vui lòng ghi rõ <strong>Mã đơn hàng + Số điện thoại</strong> trong phần Nội dung chuyển khoản để chúng tôi xác nhận giao dịch nhanh nhất. Đơn hàng sẽ được tiến hành xử lý và giao đi ngay sau khi VIORA nhận được khoản thanh toán.
+        </p>
+
+        <h2>3. Thanh toán qua Thẻ Tín Dụng / Thẻ Ghi Nợ</h2>
+        <p>
+          Chúng tôi chấp nhận thanh toán qua các loại thẻ quốc tế (Visa, MasterCard, JCB) và các thẻ ATM nội địa thông qua cổng thanh toán bảo mật. Mọi thông tin thẻ của quý khách được mã hóa chuẩn quốc tế PCI-DSS, tuyệt đối không bị lưu trữ tại hệ thống của VIORA để đảm bảo an toàn tối đa.
+        </p>
+
+        <h2>4. Ví Điện Tử</h2>
+        <p>
+          Quý khách có thể lựa chọn thanh toán nhanh chóng qua các Ví điện tử phổ biến như MoMo, ZaloPay, VNPay. Ứng dụng sẽ tự động điều hướng quý khách đến màn hình quét mã QR vô cùng tiện lợi.
+        </p>
+
+        <h2>5. Quy định về hoàn tiền (Refund)</h2>
+        <p>
+          Trong trường hợp quý khách hủy đơn hàng (trước khi hàng được giao) hoặc trả hàng thành công theo <a href="return-policy.html">Chính sách đổi trả</a>, chúng tôi sẽ thực hiện thủ tục hoàn tiền vào đúng tài khoản/thẻ mà quý khách đã sử dụng để thanh toán. Thời gian nhận lại tiền phụ thuộc vào quy định xử lý của ngân hàng phát hành thẻ (thông thường từ 3 - 7 ngày làm việc).
+        </p>
+      </article>
+    </div>
+  </main>
+
+  <div id="footer-root"></div>
+
+  <script src="assets/libs/jquery.min.js"></script>
+  <script src="assets/libs/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/core.js"></script> 
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const loader = document.getElementById('app-loading');
+      if (loader) setTimeout(() => { loader.style.opacity = '0'; setTimeout(() => loader.style.display = 'none', 400); }, 300);
+      if (window.injectLayout) injectLayout();
+      if (window.initHeader) initHeader();
+      if (window.Cart && Cart.updateBadge) Cart.updateBadge();
+    });
+  </script>
+</body>
+</html>

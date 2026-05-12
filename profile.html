@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tài Khoản Của Tôi — VIORA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="assets/libs/bootstrap.min.css"/>
+  <link rel="stylesheet" href="assets/libs/fontawesome/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/main.css"/>
+  <link rel="stylesheet" href="assets/css/account.css">
+</head>
+<body>
+  <div id="header-root"></div>
+  <div style="height: 70px;"></div>
+
+  <div class="account-page-header">
+    <div class="container">
+        <h1 class="account-page-title">Tài Khoản</h1>
+        <p class="text-white-50 mt-2" id="welcome-msg">Xin chào!</p>
+    </div>
+  </div>
+
+  <main class="container mb-5 pb-5" style="max-width: 1200px;">
+    <div class="account-layout">
+        
+        <aside class="account-sidebar">
+            <a href="profile.html" class="account-nav-item active"><i class="fa-regular fa-id-card" style="width:20px"></i> Thông tin cá nhân</a>
+            <a href="orders.html" class="account-nav-item"><i class="fa-solid fa-box" style="width:20px"></i> Lịch sử đơn hàng</a>
+            <a href="#" onclick="vioraLogout(event)" class="account-nav-item text-danger"><i class="fa-solid fa-arrow-right-from-bracket" style="width:20px"></i> Đăng xuất</a>
+        </aside>
+
+        <section class="account-content">
+            <div class="account-card">
+                <h2 class="account-card-title">Hồ Sơ Của Tôi</h2>
+                
+                <div id="update-alert" class="alert alert-success" style="display:none; font-size:14px;"></div>
+
+                <form id="profile-form" class="row g-4">
+                    <div class="col-md-6">
+                        <label class="acc-label">Họ và tên *</label>
+                        <input type="text" class="acc-input" id="p-name" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="acc-label">Email *</label>
+                        <input type="email" class="acc-input" id="p-email" disabled style="background:#f5f5f5; cursor:not-allowed;" title="Email không thể thay đổi">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="acc-label">Số điện thoại</label>
+                        <input type="tel" class="acc-input" id="p-phone" placeholder="Thêm số điện thoại...">
+                    </div>
+                    <div class="col-12">
+                        <label class="acc-label">Địa chỉ giao hàng mặc định</label>
+                        <input type="text" class="acc-input" id="p-address" placeholder="Số nhà, tên đường, Phường/Xã, Quận/Huyện, Tỉnh/Thành phố...">
+                    </div>
+                    <div class="col-12 mt-4">
+                        <button type="submit" class="btn-acc-save" id="btn-save">LƯU THAY ĐỔI</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+    </div>
+  </main>
+
+  <div id="footer-root"></div>
+
+  <script src="assets/libs/jquery.min.js"></script>
+  <script src="assets/libs/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/core.js"></script> 
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        if(window.injectLayout) injectLayout();
+        if(window.initHeader) initHeader();
+
+        // 1. Kiểm tra đăng nhập
+        let user = JSON.parse(localStorage.getItem('viora_user'));
+        if (!user || !user.loggedIn) {
+            window.location.href = "login.html";
+            return;
+        }
+
+        // 2. Điền thông tin cũ vào Form
+        document.getElementById('welcome-msg').textContent = 'Xin chào, ' + user.name;
+        document.getElementById('p-name').value = user.name || '';
+        document.getElementById('p-email').value = user.email || '';
+        document.getElementById('p-phone').value = user.phone || '';
+        document.getElementById('p-address').value = user.address || '';
+
+        // 3. Xử lý Lưu thông tin
+        document.getElementById('profile-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = document.getElementById('btn-save');
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> ĐANG LƯU...';
+            btn.style.pointerEvents = 'none';
+
+            setTimeout(() => {
+                // Cập nhật object user
+                user.name = document.getElementById('p-name').value.trim();
+                user.phone = document.getElementById('p-phone').value.trim();
+                user.address = document.getElementById('p-address').value.trim();
+                
+                // Lưu lại vào LocalStorage
+                localStorage.setItem('viora_user', JSON.stringify(user));
+                
+                // Hiện thông báo
+                const alertBox = document.getElementById('update-alert');
+                alertBox.textContent = "Cập nhật thông tin thành công!";
+                alertBox.style.display = 'block';
+                
+                // Khôi phục nút bấm
+                btn.innerHTML = 'LƯU THAY ĐỔI';
+                btn.style.pointerEvents = 'auto';
+
+                // Tự động load lại trang để cập nhật Header sau 1s
+                setTimeout(() => window.location.reload(), 1000);
+            }, 800);
+        });
+    });
+  </script>
+</body>
+</html>

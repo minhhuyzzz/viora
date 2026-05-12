@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nghệ thuật Minimalism — VIORA LUXURY</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="assets/libs/bootstrap.min.css"/>
+  <link rel="stylesheet" href="assets/libs/fontawesome/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/main.css"/>
+  <link rel="stylesheet" href="assets/css/article.css">
+</head>
+<body>
+  <div id="app-loading" style="transition: opacity 0.4s;"><div class="loading-logo">VIORA</div></div>
+
+  <div id="header-root"></div>
+  <div style="height: 60px;"></div>
+
+  <main class="article-page">
+    <div class="container">
+      <header class="article-header">
+        <a href="blog.html" class="article-category">Bí quyết phối đồ</a>
+        <h1 class="article-title">Nghệ thuật Minimalism: Ít hơn nhưng đẳng cấp hơn</h1>
+        <div class="article-meta">
+          <span>Tác giả: VIORA Editorial</span> <span class="mx-2">|</span> <span>28 Tháng 4, 2026</span> <span class="mx-2">|</span> <span>3 Phút đọc</span>
+        </div>
+      </header>
+
+      <div class="article-hero-wrap">
+        <img src="assets/images/bv2.jpg" alt="Phối đồ Minimalism" class="article-hero-img">
+      </div>
+
+      <article class="article-content">
+        <p class="drop-cap">
+          Phong cách tối giản (Minimalism) đang trở thành thước đo mới của sự xa xỉ. Trong một thế giới ồn ào và tràn ngập logo, giới tinh hoa đang chuyển hướng sang "Quiet Luxury" – sự sang trọng thầm lặng. Họ không cần chứng tỏ bản thân qua những nhãn mác phô trương.
+        </p>
+        <p>
+          Chìa khóa của Minimalism nằm ở chất liệu và phom dáng. Khi bạn lược bỏ đi những họa tiết cầu kỳ, chất lượng của đường kim mũi chỉ và kết cấu vải sẽ trở thành tâm điểm. Một chiếc blazer cắt may sắc sảo hay một chiếc quần âu cạp cao vừa vặn có thể nâng tầm diện mạo của bạn lên mức tối đa.
+        </p>
+
+        <figure>
+          <img src="assets/images/blog9.jpg" alt="Trang phục tối giản">
+          <figcaption>Tông màu trung tính như be, trắng, đen và xám là linh hồn của phong cách tối giản.</figcaption>
+        </figure>
+
+        <h2>Sự quyền lực của phụ kiện</h2>
+        <p>
+          Với trang phục tối giản, phụ kiện đóng vai trò quyết định. Một chiếc túi xách da thật với phom dáng cứng cáp, hay một chiếc đồng hồ dây kim loại cổ điển sẽ làm bừng sáng cả set đồ. Hãy nhớ nguyên tắc: "Chỉ giữ lại những gì thực sự cần thiết và để chúng tự tỏa sáng".
+        </p>
+
+        <blockquote class="article-quote">
+          "Sự thanh lịch thực sự luôn từ chối sự chú ý ồn ào, nhưng lại lưu luyến mãi trong tâm trí người nhìn."
+        </blockquote>
+      </article>
+
+      <div class="article-footer">
+        <div class="article-tags">
+          <a href="#">#Minimalism</a> <a href="#">#QuietLuxury</a> <a href="#">#PhốiĐồ</a>
+        </div>
+        <div class="article-share">
+          <span class="text-muted fw-normal">Chia sẻ:</span>
+          <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#"><i class="fa-brands fa-twitter"></i></a>
+          <a href="#"><i class="fa-brands fa-pinterest-p"></i></a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div id="footer-root"></div>
+
+  <script src="assets/libs/jquery.min.js"></script>
+  <script src="assets/libs/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/core.js"></script> 
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const loader = document.getElementById('app-loading');
+      if (loader) setTimeout(() => { loader.style.opacity = '0'; setTimeout(() => loader.style.display = 'none', 400); }, 300);
+      if (window.injectLayout) injectLayout();
+      if (window.initHeader) initHeader();
+      if (window.Cart && Cart.updateBadge) Cart.updateBadge();
+    });
+  </script>
+</body>
+</html>

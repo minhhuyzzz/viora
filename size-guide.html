@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hướng Dẫn Chọn Size — VIORA LUXURY</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="assets/libs/bootstrap.min.css"/>
+  <link rel="stylesheet" href="assets/libs/fontawesome/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/main.css"/>
+  
+  <style>
+    .size-page-header {
+        text-align: center;
+        padding: 60px 0 40px;
+        background-color: #fcfcfc;
+        border-bottom: 1px solid #eee;
+        margin-bottom: 50px;
+    }
+    .size-page-title {
+        font-family: var(--font-display, 'Playfair Display', serif);
+        font-size: 36px;
+        font-weight: 700;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: #111;
+    }
+    .size-subtitle {
+        font-size: 13px;
+        color: #666;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-top: 10px;
+    }
+    
+    /* Thiết kế Tab phong cách Luxury */
+    .size-tabs {
+        border-bottom: 2px solid #eee;
+        margin-bottom: 40px;
+    }
+    .size-tabs .nav-link {
+        color: #888;
+        border: none;
+        background: transparent;
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 2px;
+        padding: 15px 30px;
+        position: relative;
+        transition: all 0.3s ease;
+    }
+    .size-tabs .nav-link:hover {
+        color: #111;
+    }
+    .size-tabs .nav-link.active {
+        color: #111;
+        font-weight: 700;
+    }
+    /* Gạch dưới màu đen chạy mượt mà khi Tab được chọn */
+    .size-tabs .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: #111;
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+    }
+    .size-tabs .nav-link.active::after {
+        transform: scaleX(1);
+    }
+
+    /* Khung chứa ảnh bảng size */
+    .size-img-wrap {
+        max-width: 800px;
+        margin: 0 auto;
+        background: #fff;
+        padding: 20px;
+        border: 1px solid #eee;
+        border-radius: 4px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    }
+    .size-img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+    
+    .size-note {
+        max-width: 800px;
+        margin: 30px auto 0;
+        font-size: 14px;
+        color: #555;
+        line-height: 1.6;
+        text-align: center;
+        padding: 20px;
+        background-color: #fcfcfc;
+        border-left: 3px solid #c5a059;
+    }
+  </style>
+</head>
+<body>
+  <div id="app-loading" style="transition: opacity 0.4s;"><div class="loading-logo">VIORA</div></div>
+
+  <div id="header-root"></div>
+  <div style="height: 60px;"></div>
+
+  <header class="size-page-header">
+    <div class="container">
+        <h1 class="size-page-title">Hướng Dẫn Chọn Size</h1>
+        <p class="size-subtitle">Tìm kiếm sự vừa vặn hoàn hảo cho bạn</p>
+    </div>
+  </header>
+
+  <main class="container pb-5 mb-5">
+    <nav class="breadcrumb-bar" aria-label="Breadcrumb">
+      <a href="index.html" class="text-muted text-decoration-none small text-uppercase letter-spacing-1">Trang Chủ</a> <span class="text-muted mx-2">›</span>
+      <a href="shop.html" class="text-muted text-decoration-none small text-uppercase letter-spacing-1">Cửa Hàng</a> <span class="text-muted mx-2">›</span>
+      <span class="small text-uppercase letter-spacing-1" style="color:var(--gold)">Hướng Dẫn Size</span>
+    </nav>
+    
+    <ul class="nav nav-tabs justify-content-center size-tabs" id="sizeTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="clothing-tab" data-bs-toggle="tab" data-bs-target="#clothing" type="button" role="tab" aria-controls="clothing" aria-selected="true">SIZE QUẦN ÁO</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="shoes-tab" data-bs-toggle="tab" data-bs-target="#shoes" type="button" role="tab" aria-controls="shoes" aria-selected="false">SIZE GIÀY</button>
+      </li>
+    </ul>
+
+    <div class="tab-content" id="sizeTabContent">
+      
+      <div class="tab-pane fade show active" id="clothing" role="tabpanel" aria-labelledby="clothing-tab">
+        <div class="size-img-wrap">
+            <img src="assets/images/sizequanao.png" alt="Bảng size quần áo VIORA" class="size-img" onerror="this.src='https://images.unsplash.com/photo-1558769132-cb1fac089047?auto=format&fit=crop&w=800&q=80'">
+        </div>
+        <div class="size-note">
+            <strong>Lưu ý:</strong> Bảng quy đổi trên chỉ mang tính chất tham khảo. Kích thước thực tế có thể xê dịch từ 1-2cm tùy thuộc vào chất liệu và phom dáng thiết kế. Nếu số đo của bạn nằm giữa 2 size, chúng tôi khuyên bạn nên <strong>chọn size lớn hơn</strong> để mang lại cảm giác thoải mái nhất.
+        </div>
+      </div>
+
+      <div class="tab-pane fade" id="shoes" role="tabpanel" aria-labelledby="shoes-tab">
+        <div class="size-img-wrap">
+            <img src="assets/images/sizegiay.jpg" alt="Bảng size giày VIORA" class="size-img" onerror="this.src='https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=800&q=80'">
+        </div>
+        <div class="size-note">
+            <strong>Mẹo đo size giày:</strong> Nên đo chiều dài bàn chân vào cuối ngày vì lúc này bàn chân của bạn giãn nở to nhất. Đặt chân lên một tờ giấy trắng, đánh dấu điểm gót chân và ngón chân dài nhất, sau đó đo khoảng cách giữa 2 điểm này để đối chiếu với bảng size.
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <div id="footer-root"></div>
+
+  <script src="assets/libs/jquery.min.js"></script>
+  <script src="assets/libs/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/core.js"></script> 
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const loader = document.getElementById('app-loading');
+      if (loader) setTimeout(() => { loader.style.opacity = '0'; setTimeout(() => loader.style.display = 'none', 400); }, 300);
+
+      if (window.injectLayout) injectLayout();
+      if (window.initHeader) initHeader();
+      if (window.Cart && Cart.updateBadge) Cart.updateBadge();
+    });
+  </script>
+</body>
+</html>

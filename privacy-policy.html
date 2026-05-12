@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chính sách bảo mật — VIORA LUXURY</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="assets/libs/bootstrap.min.css"/>
+  <link rel="stylesheet" href="assets/libs/fontawesome/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/main.css"/>
+  <link rel="stylesheet" href="assets/css/article.css">
+</head>
+<body>
+  <div id="app-loading" style="transition: opacity 0.4s;"><div class="loading-logo">VIORA</div></div>
+
+  <div id="header-root"></div>
+  <div style="height: 60px;"></div>
+
+  <main class="article-page">
+    <div class="container">
+      <header class="article-header">
+        <h1 class="article-title">Chính Sách Bảo Mật</h1>
+        <div class="article-meta">
+          <span>Cập nhật lần cuối: 12 Tháng 5, 2026</span>
+        </div>
+      </header>
+
+      <article class="article-content">
+        <p>
+          Tại <strong>VIORA LUXURY</strong>, chúng tôi hiểu rằng việc bảo vệ thông tin cá nhân của khách hàng là vô cùng quan trọng. Chính sách bảo mật này mô tả cách chúng tôi thu thập, sử dụng và bảo vệ dữ liệu của bạn khi bạn truy cập và mua sắm trên website của chúng tôi.
+        </p>
+
+        <h2>1. Thu thập thông tin cá nhân</h2>
+        <p>
+          Chúng tôi chỉ thu thập các thông tin cần thiết phục vụ cho việc xử lý đơn hàng và chăm sóc khách hàng, bao gồm: Họ tên, Số điện thoại, Email, và Địa chỉ giao hàng. Các thông tin này được cung cấp tự nguyện bởi bạn trong quá trình Đăng ký tài khoản, Đăng ký VIP hoặc Thanh toán đơn hàng.
+        </p>
+
+        <h2>2. Sử dụng thông tin</h2>
+        <p>
+          Thông tin của bạn sẽ được VIORA sử dụng trong các trường hợp sau:
+        </p>
+        <ul>
+          <li>Xử lý và giao đơn hàng bạn đã đặt mua.</li>
+          <li>Gửi thông báo về tình trạng giao hàng hoặc hỗ trợ kỹ thuật.</li>
+          <li>Gửi các ưu đãi đặc quyền dành riêng cho thẻ thành viên VIP (nếu bạn đồng ý nhận email marketing).</li>
+          <li>Ngăn ngừa các hoạt động gian lận hoặc phá hoại tài khoản của người dùng.</li>
+        </ul>
+
+        <h2>3. Chia sẻ thông tin</h2>
+        <p>
+          VIORA cam kết <strong>không bán, trao đổi hay chia sẻ</strong> thông tin cá nhân của khách hàng cho bất kỳ bên thứ ba nào vì mục đích thương mại. Thông tin chỉ được chia sẻ cho bên thứ ba trong trường hợp cần thiết như: đối tác vận chuyển (để giao hàng), hoặc khi có yêu cầu hợp pháp từ cơ quan thực thi pháp luật.
+        </p>
+
+        <h2>4. Bảo mật dữ liệu</h2>
+        <p>
+          Chúng tôi áp dụng các biện pháp bảo mật điện tử và quản lý nghiêm ngặt để đảm bảo an toàn cho dữ liệu cá nhân của bạn. Dữ liệu thẻ tín dụng/ngân hàng (nếu có) được mã hóa thông qua các cổng thanh toán quốc tế và không lưu trữ trực tiếp trên máy chủ của VIORA.
+        </p>
+
+        <h2>5. Quyền lợi của khách hàng</h2>
+        <p>
+          Bạn có quyền truy cập, chỉnh sửa hoặc yêu cầu xóa bỏ thông tin cá nhân của mình bất kỳ lúc nào thông qua trang <em>Tài khoản của tôi</em> hoặc liên hệ trực tiếp với đội ngũ Chăm sóc Khách hàng của VIORA.
+        </p>
+      </article>
+    </div>
+  </main>
+
+  <div id="footer-root"></div>
+
+  <script src="assets/libs/jquery.min.js"></script>
+  <script src="assets/libs/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/core.js"></script> 
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const loader = document.getElementById('app-loading');
+      if (loader) setTimeout(() => { loader.style.opacity = '0'; setTimeout(() => loader.style.display = 'none', 400); }, 300);
+      if (window.injectLayout) injectLayout();
+      if (window.initHeader) initHeader();
+      if (window.Cart && Cart.updateBadge) Cart.updateBadge();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Đăng nhập — VIORA</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  
+  <link rel="stylesheet" href="assets/libs/bootstrap.min.css"/>
+  <link rel="stylesheet" href="assets/libs/fontawesome/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/main.css"/>
+  <link rel="stylesheet" href="assets/css/login.css"/>
+</head>
+<body class="auth-page-body">
+  <nav class="auth-back-bar" aria-label="Điều hướng nhanh">
+    <a href="index.html" class="auth-back-bar__link">
+      <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+      Về trang chủ
+    </a>
+  </nav>
+  <nav class="breadcrumb-bar container" aria-label="Breadcrumb" style="max-width:980px; padding:0 20px">
+    <a href="index.html" class="text-muted text-decoration-none small text-uppercase letter-spacing-1">Trang Chủ</a> <span class="text-muted mx-2">›</span>
+    <span class="small text-uppercase letter-spacing-1" style="color:var(--gold)">Đăng Nhập / Đăng Ký</span>
+  </nav>
+
+  <div class="auth-page-wrapper">
+    
+    <div class="auth-card">
+      <div class="auth-header">
+          <a href="index.html" class="auth-logo d-flex align-items-center justify-content-center text-decoration-none text-dark">
+              <img src="assets/images/logo.png" alt="VIORA Logo" style="height: 45px; margin-right: 10px; object-fit: contain;">
+              VIORA
+          </a>
+      </div>
+
+      <div id="view-login" class="auth-view active">
+        <h1 class="auth-title">Đăng nhập</h1>
+        <p class="auth-subtitle">Đăng nhập hoặc tạo tài khoản</p>
+
+        <div class="social-login-grid">
+          <button class="btn-social">
+            <img src="assets/images/gg.jpg" alt="Google">
+          </button>
+          <button class="btn-social">
+            <img src="assets/images/fb.png" alt="Facebook">
+          </button>
+        </div>
+
+        <div class="auth-divider">hoặc</div>
+
+        <div id="login-alert" class="alert alert-danger" style="display: none; font-size: 13px; padding: 10px;"></div>
+
+        <form id="form-login">
+          <div class="auth-input-group">
+            <input type="email" class="auth-input" id="login-email" placeholder="Email" required>
+          </div>
+          <div class="auth-input-group">
+            <input type="password" class="auth-input" id="login-pass" placeholder="Mật khẩu" required>
+          </div>
+          
+          <button type="submit" class="btn-auth-submit" id="btn-login-submit">Đăng nhập</button>
+          
+          <div class="d-flex align-items-center mt-3 gap-2">
+            <input type="checkbox" id="check-news" checked style="width: 16px; height: 16px; accent-color: #0d6efd;">
+            <label for="check-news" class="small text-dark">Gửi cho tôi tin tức và ưu đãi qua email</label>
+          </div>
+
+          <p class="auth-policy">Bằng cách tiếp tục, bạn đồng ý với <a href="#">Điều khoản dịch vụ</a> của chúng tôi</p>
+        </form>
+
+        <div class="text-center mt-4">
+            <span class="small text-muted">Chưa có tài khoản?</span>
+            <a href="javascript:void(0)" onclick="toggleView('register')" class="small text-primary fw-bold text-decoration-none"> Tạo ngay</a>
+        </div>
+      </div>
+
+      <div id="view-register" class="auth-view">
+        <h1 class="auth-title">Tạo tài khoản</h1>
+        <p class="auth-subtitle">Tham gia cùng VIORA ngay hôm nay</p>
+
+        <div id="reg-alert" class="alert alert-danger" style="display: none; font-size: 13px; padding: 10px;"></div>
+
+        <form id="form-register">
+          <div class="auth-input-group">
+            <input type="text" class="auth-input" id="reg-name" placeholder="Họ và tên" required>
+          </div>
+          <div class="auth-input-group">
+            <input type="email" class="auth-input" id="reg-email" placeholder="Email" required>
+          </div>
+          <div class="auth-input-group">
+            <input type="password" class="auth-input" id="reg-pass" placeholder="Mật khẩu (từ 6 ký tự)" minlength="6" required>
+          </div>
+          
+          <button type="submit" class="btn-auth-submit" id="btn-reg-submit">Tiếp tục</button>
+          
+          <p class="auth-policy">Bằng cách tạo tài khoản, bạn đồng ý với <a href="#">Điều khoản dịch vụ</a> của chúng tôi</p>
+        </form>
+
+        <div class="text-center mt-4">
+            <a href="javascript:void(0)" onclick="toggleView('login')" class="small text-primary fw-bold text-decoration-none"><i class="fa-solid fa-arrow-left"></i> Quay lại đăng nhập</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="auth-footer-links">
+        <a href="#">Chính sách quyền riêng tư</a>
+    </div>
+  </div>
+
+  <script src="assets/libs/jquery.min.js"></script>
+  <script src="assets/js/storage.js"></script>
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Nếu đã đăng nhập, tự động đá về trang chủ
+        const user = Auth.getCurrentUser();
+        if (user && user.loggedIn) {
+            window.location.href = 'index.html';
+        }
+    });
+
+    // Hàm chuyển đổi giữa Đăng nhập và Đăng ký
+    function toggleView(view) {
+        document.getElementById('view-login').classList.remove('active');
+        document.getElementById('view-register').classList.remove('active');
+        
+        document.getElementById('view-' + view).classList.add('active');
+    }
+
+    // XỬ LÝ ĐĂNG KÝ
+    document.getElementById('form-register').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const btn = document.getElementById('btn-reg-submit');
+        btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Đang xử lý...';
+
+        setTimeout(() => {
+            const name = document.getElementById('reg-name').value.trim();
+            const email = document.getElementById('reg-email').value.trim();
+            const pass = document.getElementById('reg-pass').value;
+
+            // Gọi hàm từ file storage.js
+            const result = Auth.register(name, email, pass);
+
+            if (result.success) {
+                document.getElementById('reg-alert').className = "alert alert-success";
+                document.getElementById('reg-alert').textContent = result.msg;
+                document.getElementById('reg-alert').style.display = 'block';
+                setTimeout(() => window.location.href = 'index.html', 1000);
+            } else {
+                document.getElementById('reg-alert').className = "alert alert-danger";
+                document.getElementById('reg-alert').textContent = result.msg;
+                document.getElementById('reg-alert').style.display = 'block';
+                btn.innerHTML = 'Tiếp tục';
+            }
+        }, 800);
+    });
+
+    // XỬ LÝ ĐĂNG NHẬP
+    document.getElementById('form-login').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const btn = document.getElementById('btn-login-submit');
+        btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Đang xử lý...';
+
+        setTimeout(() => {
+            const email = document.getElementById('login-email').value.trim();
+            const pass = document.getElementById('login-pass').value;
+
+            // Gọi hàm từ file storage.js
+            const result = Auth.login(email, pass);
+
+            if (result.success) {
+                document.getElementById('login-alert').className = "alert alert-success";
+                document.getElementById('login-alert').textContent = result.msg;
+                document.getElementById('login-alert').style.display = 'block';
+                setTimeout(() => window.location.href = 'index.html', 1000);
+            } else {
+                document.getElementById('login-alert').className = "alert alert-danger";
+                document.getElementById('login-alert').textContent = result.msg;
+                document.getElementById('login-alert').style.display = 'block';
+                btn.innerHTML = 'Đăng nhập';
+            }
+        }, 800);
+    });
+  </script>
+</body>
+</html>

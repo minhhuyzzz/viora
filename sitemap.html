@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sơ Đồ Trang Web (Sitemap) — VIORA LUXURY</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="assets/libs/bootstrap.min.css"/>
+  <link rel="stylesheet" href="assets/libs/fontawesome/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/main.css"/>
+  <link rel="stylesheet" href="assets/css/sitemap.css"> </head>
+<body>
+  <div id="app-loading" style="transition: opacity 0.4s;"><div class="loading-logo">VIORA</div></div>
+
+  <div id="header-root"></div>
+  <div style="height: 60px;"></div>
+
+  <header class="sitemap-page-header">
+    <div class="container">
+        <h1 class="sitemap-page-title">Sơ Đồ Trang Web</h1>
+        <p class="sitemap-subtitle">Khám phá toàn bộ hệ thống VIORA</p>
+    </div>
+  </header>
+
+  <main class="container" style="max-width: 1200px;">
+    <nav class="breadcrumb-bar" aria-label="Breadcrumb">
+      <a href="index.html" class="text-muted text-decoration-none small text-uppercase letter-spacing-1">Trang Chủ</a> <span class="text-muted mx-2">›</span>
+      <span class="small text-uppercase letter-spacing-1" style="color:var(--gold)">Sơ Đồ Website</span>
+    </nav>
+
+    <div class="sitemap-grid">
+        
+        <div class="sitemap-column">
+            <h3>Khám Phá VIORA</h3>
+            <ul class="sitemap-list">
+                <li><a href="index.html">Trang chủ (Home)</a></li>
+                <li><a href="shop.html">Tất cả sản phẩm (Shop)</a></li>
+                <li><a href="product-detail.html">Chi tiết sản phẩm (Mẫu)</a></li>
+                <li><a href="contact.html">Liên hệ với chúng tôi</a></li>
+            </ul>
+        </div>
+
+        <div class="sitemap-column">
+            <h3>Tạp Chí Thời Trang</h3>
+            <ul class="sitemap-list">
+                <li><a href="blog.html">VIORA Journal (Trang chính)</a></li>
+                <li><a href="article.html">Bài viết: Trang sức Swarovski</a></li>
+                <li><a href="article-lua-to-tam.html">Bài viết: Lụa tơ tằm thượng hạng</a></li>
+                <li><a href="article-minimalism.html">Bài viết: Nghệ thuật Minimalism</a></li>
+                <li><a href="article-capsule.html">Bài viết: Tủ đồ con nhộng</a></li>
+                <li><a href="article-bao-quan.html">Bài viết: Bảo quản trang sức xa xỉ</a></li>
+                <li><a href="article-egyptian-cotton.html">Bài viết: Quyền năng Egyptian Cotton</a></li>
+            </ul>
+        </div>
+
+        <div class="sitemap-column">
+            <h3>Hỗ Trợ Khách Hàng</h3>
+            <ul class="sitemap-list">
+                <li><a href="payment-policy.html">Chính sách thanh toán</a></li>
+                <li><a href="return-policy.html">Chính sách đổi trả</a></li>
+                <li><a href="privacy-policy.html">Chính sách bảo mật</a></li>
+            </ul>
+        </div>
+
+        <div class="sitemap-column">
+            <h3>Tài Khoản & Đơn Hàng</h3>
+            <ul class="sitemap-list">
+                <li><a href="login.html">Đăng nhập / Đăng ký</a></li>
+                <li><a href="vip.html">Kích hoạt Thẻ VIP</a></li>
+                <li><a href="profile.html">Thông tin cá nhân</a></li>
+                <li><a href="orders.html">Lịch sử đơn hàng đã mua</a></li>
+                <li><a href="cart.html">Giỏ hàng của tôi</a></li>
+                <li><a href="checkout.html">Thanh toán (Checkout)</a></li>
+                <li><a href="order-success.html">Hoàn tất đặt hàng</a></li>
+            </ul>
+        </div>
+
+    </div>
+  </main>
+
+  <div id="footer-root"></div>
+
+  <script src="assets/libs/jquery.min.js"></script>
+  <script src="assets/libs/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/core.js"></script> 
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const loader = document.getElementById('app-loading');
+      if (loader) setTimeout(() => { loader.style.opacity = '0'; setTimeout(() => loader.style.display = 'none', 400); }, 300);
+
+      if (window.injectLayout) injectLayout();
+      if (window.initHeader) initHeader();
+      if (window.Cart && Cart.updateBadge) Cart.updateBadge();
+    });
+  </script>
+</body>
+</html>

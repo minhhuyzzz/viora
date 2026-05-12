@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Liên Hệ — VIORA LUXURY</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="assets/libs/bootstrap.min.css"/>
+  <link rel="stylesheet" href="assets/libs/fontawesome/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/main.css"/>
+  <link rel="stylesheet" href="assets/css/contact.css"> </head>
+<body>
+  <div id="app-loading" style="transition: opacity 0.4s;"><div class="loading-logo">VIORA</div></div>
+
+  <div id="header-root"></div>
+  <div style="height: 60px;"></div>
+
+  <header class="contact-page-header">
+    <div class="container">
+        <h1 class="contact-page-title">Liên Hệ Với Chúng Tôi</h1>
+        <p class="contact-page-subtitle">VIORA luôn lắng nghe và sẵn sàng hỗ trợ bạn 24/7</p>
+    </div>
+  </header>
+
+  <main>
+    <div class="container" style="max-width: 1200px;">
+        <nav class="breadcrumb-bar" aria-label="Breadcrumb">
+            <a href="index.html" class="text-muted text-decoration-none small text-uppercase letter-spacing-1">Trang Chủ</a> <span class="text-muted mx-2">›</span>
+            <span class="small text-uppercase letter-spacing-1" style="color:var(--gold)">Liên Hệ</span>
+        </nav>
+
+        <div class="row align-items-start">
+            
+            <div class="col-lg-5">
+                <div class="contact-info-wrap">
+                    
+                    <div class="contact-info-block">
+                        <i class="fa-solid fa-location-dot contact-icon"></i>
+                        <h3 class="contact-info-title">Trụ sở chính</h3>
+                        <p class="contact-info-text">
+                            Viora Shop<br>
+                            12 Nguyễn Văn Bảo, Phường 4, Quận Gò Vấp, TP.HCM
+                        </p>
+                    </div>
+
+                    <div class="contact-info-block">
+                        <i class="fa-solid fa-phone contact-icon"></i>
+                        <h3 class="contact-info-title">Điện thoại</h3>
+                        <p class="contact-info-text">
+                            CSKH: <a href="tel:0901234567">077 786 8762</a><br>
+                            Hotline VIP: <a href="tel:19008888">1900 2006</a>
+                        </p>
+                    </div>
+
+                    <div class="contact-info-block">
+                        <i class="fa-regular fa-envelope contact-icon"></i>
+                        <h3 class="contact-info-title">Email</h3>
+                        <p class="contact-info-text">
+                            Hỗ trợ: <a href="mailto:support@viora.vn">huy868762@gmail.vcom</a><br>
+                            Hợp tác: <a href="mailto:partners@viora.vn">support@viora.vn</a>
+                        </p>
+                    </div>
+
+                    <div class="contact-info-block">
+                        <i class="fa-regular fa-clock contact-icon"></i>
+                        <h3 class="contact-info-title">Giờ mở cửa</h3>
+                        <p class="contact-info-text">
+                            Thứ 2 - Thứ 6: 08:30 - 21:00<br>
+                            Thứ 7 - Chủ Nhật: 09:00 - 22:00
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-lg-7">
+                <div class="contact-form-wrap">
+                    <h2 class="contact-form-title">Gửi Tin Nhắn</h2>
+                    
+                    <div id="contact-alert" class="alert alert-success" style="display: none; font-size: 14px;"></div>
+
+                    <form id="contact-form">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input type="text" class="ct-input" id="ct-name" placeholder="Họ và tên *" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="email" class="ct-input" id="ct-email" placeholder="Email của bạn *" required>
+                            </div>
+                        </div>
+                        <input type="text" class="ct-input" id="ct-subject" placeholder="Chủ đề (Vd: Đơn hàng, Tư vấn...)" required>
+                        <textarea class="ct-input" id="ct-message" rows="5" placeholder="Nội dung lời nhắn *" required></textarea>
+                        
+                        <button type="submit" class="btn-contact-submit" id="btn-submit">GỬI YÊU CẦU</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <h2 class="center-text">Bản đồ</h2>
+    <div class="contact-map-wrap">
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.858237890734!2d106.6842704153343!3d10.82295629228994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317528e5496d03cf%3A0xa5b8e7395ec636b9!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBDw7RuZyBuZ2hp4buHcCBUUC5IQ00!5e0!3m2!1svi!2s!4v1700000000000!5m2!1svi!2s" 
+            width="100%" 
+            height="100%" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+    </div>
+  </main>
+
+  <div id="footer-root"></div>
+
+  <script src="assets/libs/jquery.min.js"></script>
+  <script src="assets/libs/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/core.js"></script> 
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const loader = document.getElementById('app-loading');
+      if (loader) setTimeout(() => { loader.style.opacity = '0'; setTimeout(() => loader.style.display = 'none', 400); }, 300);
+      
+      if (window.injectLayout) injectLayout();
+      if (window.initHeader) initHeader();
+      if (window.Cart && Cart.updateBadge) Cart.updateBadge();
+
+      // Xử lý gửi form Liên hệ
+      document.getElementById('contact-form').addEventListener('submit', function(e) {
+          e.preventDefault();
+          const btn = document.getElementById('btn-submit');
+          btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> ĐANG GỬI...';
+          btn.style.pointerEvents = 'none';
+
+          // Giả lập độ trễ mạng
+          setTimeout(() => {
+              const alertBox = document.getElementById('contact-alert');
+              alertBox.textContent = "Cảm ơn bạn! Lời nhắn đã được gửi đến VIORA. Chúng tôi sẽ phản hồi sớm nhất có thể.";
+              alertBox.style.display = 'block';
+
+              // Reset form
+              document.getElementById('contact-form').reset();
+              btn.innerHTML = 'GỬI YÊU CẦU';
+              btn.style.pointerEvents = 'auto';
+
+              // Ẩn thông báo sau 5 giây
+              setTimeout(() => { alertBox.style.display = 'none'; }, 5000);
+          }, 1000);
+      });
+    });
+  </script>
+</body>
+</html>
