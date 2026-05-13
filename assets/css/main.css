@@ -704,6 +704,7 @@ button.viora-icon {
     overflow: hidden;
     display: flex;
     white-space: nowrap;
+    border-radius: 20px;
 }
 
 .dark-marquee .marquee-wrapper {
