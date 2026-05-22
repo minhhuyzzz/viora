@@ -43,9 +43,9 @@ const vioraHeader = `
                     </div>
                 </div>
             </li>
-            <li class="nav-item"><a class="nav-link" href="shop.html">Trang phục</a></li>
-            <li class="nav-item"><a class="nav-link" href="shop.html">Phụ kiện</a></li>
-            <li class="nav-item"><a class="nav-link" href="introduction.html">Giới thiệu</a></li>
+            <li class="nav-item"><a class="nav-link" href="shop.html?cat=ao-khoac">Trang phục</a></li>
+            <li class="nav-item"><a class="nav-link" href="shop.html?cat=day-chuyen">Phụ kiện</a></li>
+            <li class="nav-item"><a class="nav-link" href="introduction.html">Về chúng tôi</a></li>
             <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
             <li class="nav-item"><a class="nav-link" href="vip.html">Đăng kí VIP</a></li>
         </ul>

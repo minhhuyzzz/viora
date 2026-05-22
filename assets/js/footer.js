@@ -64,4 +64,23 @@ const vioraFooter = `
         </div>
     </div>
 </footer>
+<div class="viora-contact-widget">
+        <div class="viora-widget-menu" id="viora-widget-menu">
+            <a href="https://zalo.me/0777868762" target="_blank" class="viora-widget-item" data-tooltip="Chat Zalo">
+                <span class="zalo-text-icon">Z</span>
+            </a>
+            <a href="https://www.messenger.com/" target="_blank" class="viora-widget-item" data-tooltip="Messenger">
+                <i class="fa-brands fa-facebook-messenger"></i>
+            </a>
+            <a href="tel:0777868762" class="viora-widget-item" data-tooltip="Hotline">
+                <i class="fa-solid fa-phone"></i>
+            </a>
+        </div>
+        
+        <button class="viora-widget-btn" id="viora-widget-btn" aria-label="Liên hệ">
+            <i class="fa-solid fa-headset"></i>
+        </button>
+    </div>
+
 `;
+
