@@ -284,164 +284,45 @@
 .btn-reset-all:hover { background: #333; }
 
 
-/* ============================================================
-   VIORA — SHOP PAGE MOBILE OPTIMIZATION
-   ============================================================ */
-
-   @media (max-width: 575px) {
-    /* 1. Lưới sản phẩm: Giữ 2 cột nhưng thu nhỏ khoảng cách (gap) lại */
-    .products-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 25px 10px; /* Thu hẹp khoảng cách để ảnh to và rõ hơn */
-    }
-
-    /* 2. Chỉnh lại chữ sản phẩm cho vừa khung 2 cột mobile */
-    .p-info { padding-top: 12px; }
-    .p-name { font-size: 13px; margin: 5px 0; }
-    .p-desc { font-size: 11px; min-height: 32px; -webkit-line-clamp: 2; margin-bottom: 8px; }
-    .p-price { font-size: 13px; }
-
-    /* 3. Nút Quick Add: Trên mobile không có chuột để hover, nên cho hiện luôn mờ mờ hoặc thu nhỏ */
-    .p-quick-add {
-        padding: 8px;
-        font-size: 9px;
-        transform: translateY(0); /* Luôn hiện trên mobile */
-        background: rgba(0,0,0,0.7);
-    }
+/* 4. MOBILE OPTIMIZATION */
+@media (max-width: 575px) {
+    .products-grid { grid-template-columns: repeat(2, 1fr); gap: 20px 10px; }
     
-    .p-badge {
-        font-size: 8px;
-        padding: 5px 8px;
-        top: 8px; left: 8px;
-    }
-
-    /* 4. Thanh lọc (Filters) - Cho phép vuốt ngang trên điện thoại để không bị dồn cục */
-    .facets-container > .container {
-        display: flex;
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        padding-bottom: 10px;
-        -webkit-overflow-scrolling: touch; /* Vuốt mượt trên iOS */
-    }
-    
-    /* Ẩn thanh cuộn ngang cho đẹp */
-    .facets-container > .container::-webkit-scrollbar {
-        display: none;
-    }
-
-    /* Ép các cụm filter nằm trên 1 hàng ngang */
-    .d-flex.align-items-center.gap-4 {
-        gap: 15px !important;
-        flex-wrap: nowrap !important;
-        width: max-content; 
-    }
-
-    /* Chỉnh cái bảng dropdown filter để không bị tràn màn hình điện thoại */
-    .facets__display {
-        width: 220px; /* Thu nhỏ lại chút xíu */
-        left: 0;
-        right: auto;
-    }
-}
-
-
-/* ============================================================
-   VIORA — SHOP PAGE MOBILE OPTIMIZATION
-   ============================================================ */
-   @media (max-width: 575px) {
-    
-    /* 1. Lưới sản phẩm & Thông tin */
-    .products-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 25px 10px;
-    }
-    .p-info { padding-top: 12px; }
-    .p-name { font-size: 13px; margin: 5px 0; }
-    .p-desc { font-size: 11px; min-height: 32px; -webkit-line-clamp: 2; margin-bottom: 8px; }
-    .p-price { font-size: 13px; }
-
-    /* Nút thêm giỏ hàng & Badge */
-    .p-quick-add {
-        padding: 8px;
-        font-size: 9px;
-        transform: translateY(0); 
-        background: rgba(0,0,0,0.7);
-    }
-    .p-badge { font-size: 8px; padding: 5px 8px; top: 8px; left: 8px; }
-
-    /* ----------------------------------------------------
-       2. TỐI ƯU HÓA BỘ LỌC (FILTERS) THÀNH BOTTOM SHEET
-       ---------------------------------------------------- */
-    
-    /* Thanh Menu ngang có thể vuốt mượt mà */
-    .facets-container > .container {
-        display: flex;
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        padding-bottom: 5px;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none; /* Ẩn thanh cuộn Firefox */
-    }
-    .facets-container > .container::-webkit-scrollbar {
-        display: none; /* Ẩn thanh cuộn Chrome/Safari */
-    }
-    .d-flex.align-items-center.gap-4 {
-        gap: 15px !important;
-        flex-wrap: nowrap !important;
-        width: max-content; 
-    }
-
-    /* Biến Bảng Dropdown thành Bottom Sheet (Vuốt từ dưới đáy lên) */
+    /* FIX THANH ĐEN BẰNG CÁCH DÙNG FULLSCREEN OVERLAY */
     .facets__display {
         position: fixed;
-        top: auto !important;
-        bottom: 0;
+        top: 0 !important;
         left: 0;
-        width: 100vw; /* Trải dài full màn hình */
-        max-height: 65vh; /* Chiếm tối đa 65% màn hình */
+        width: 100vw;
+        height: 100vh;
         background: #fff;
-        border-radius: 20px 20px 0 0; /* Bo tròn 2 góc trên cho sang trọng */
-        box-shadow: 0 -10px 40px rgba(0,0,0,0.15);
-        padding: 25px 20px;
-        margin-top: 0;
         z-index: 99999;
-        animation: slideUpSheet 0.35s cubic-bezier(0.2, 1, 0.3, 1) forwards;
+        padding: 60px 20px;
         overflow-y: auto;
+        display: none; /* Ẩn mặc định */
     }
-
-    /* Lớp nền đen mờ (Backdrop) phủ phía sau bảng lọc */
-    .facets__disclosure[open]::before {
-        content: '';
-        position: fixed;
-        top: 0; left: 0; width: 100vw; height: 100vh;
-        background: rgba(0,0,0,0.6);
-        z-index: 99998;
-        backdrop-filter: blur(2px);
-        cursor: pointer;
+    
+    /* Khi mở bảng lọc trên mobile */
+    .facets__display.is-active {
+        display: block;
     }
-
-    /* Điều chỉnh các nút bấm bên trong to ra để dễ chạm bằng ngón tay */
+    
+    /* Header cho bảng lọc mobile */
     .facets__header {
-        padding-bottom: 15px;
-        border-bottom: 2px solid #000; /* Nổi bật phần header */
         position: sticky;
-        top: -25px;
+        top: 0;
         background: #fff;
-        z-index: 2;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #eee;
     }
-    .facet-checkbox {
-        padding: 14px 0; /* Tăng khoảng cách cực đại để ngón tay không bấm nhầm */
-        font-size: 14px;
-        border-bottom: 1px solid #f9f9f9;
-    }
-    .facet-checkbox input {
-        width: 18px;
-        height: 18px; /* Checkbox to hơn một chút */
-    }
-
-    /* Hiệu ứng trượt */
-    @keyframes slideUpSheet {
-        from { transform: translateY(100%); }
-        to { transform: translateY(0); }
+    
+    /* Nút đóng bảng lọc */
+    .close-filter-btn {
+        display: block;
+        padding: 10px;
+        background: #000;
+        color: #fff;
+        text-align: center;
+        margin-top: 20px;
     }
 }
