@@ -502,8 +502,6 @@ button.viora-icon {
 .video-container {
     position: relative;
     width: 100%;
-    /* Tỉ lệ 16:9 chuẩn Cinematic. 
-       Nếu video của Huy là 21:9 (dài hơn), hãy đổi thành 42.85% */
     padding-top: 56.25%; 
 }
 

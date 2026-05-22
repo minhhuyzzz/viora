@@ -282,3 +282,64 @@
 .product-count-viora { font-size: 11px; color: #999; text-transform: uppercase; letter-spacing: 1px; }
 .btn-reset-all { background: #000; color: #fff; border: none; padding: 5px 15px; font-size: 10px; font-weight: 700; letter-spacing: 1px; transition: 0.3s; }
 .btn-reset-all:hover { background: #333; }
+
+
+/* ============================================================
+   VIORA — SHOP PAGE MOBILE OPTIMIZATION
+   ============================================================ */
+
+   @media (max-width: 575px) {
+    /* 1. Lưới sản phẩm: Giữ 2 cột nhưng thu nhỏ khoảng cách (gap) lại */
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px 10px; /* Thu hẹp khoảng cách để ảnh to và rõ hơn */
+    }
+
+    /* 2. Chỉnh lại chữ sản phẩm cho vừa khung 2 cột mobile */
+    .p-info { padding-top: 12px; }
+    .p-name { font-size: 13px; margin: 5px 0; }
+    .p-desc { font-size: 11px; min-height: 32px; -webkit-line-clamp: 2; margin-bottom: 8px; }
+    .p-price { font-size: 13px; }
+
+    /* 3. Nút Quick Add: Trên mobile không có chuột để hover, nên cho hiện luôn mờ mờ hoặc thu nhỏ */
+    .p-quick-add {
+        padding: 8px;
+        font-size: 9px;
+        transform: translateY(0); /* Luôn hiện trên mobile */
+        background: rgba(0,0,0,0.7);
+    }
+    
+    .p-badge {
+        font-size: 8px;
+        padding: 5px 8px;
+        top: 8px; left: 8px;
+    }
+
+    /* 4. Thanh lọc (Filters) - Cho phép vuốt ngang trên điện thoại để không bị dồn cục */
+    .facets-container > .container {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding-bottom: 10px;
+        -webkit-overflow-scrolling: touch; /* Vuốt mượt trên iOS */
+    }
+    
+    /* Ẩn thanh cuộn ngang cho đẹp */
+    .facets-container > .container::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Ép các cụm filter nằm trên 1 hàng ngang */
+    .d-flex.align-items-center.gap-4 {
+        gap: 15px !important;
+        flex-wrap: nowrap !important;
+        width: max-content; 
+    }
+
+    /* Chỉnh cái bảng dropdown filter để không bị tràn màn hình điện thoại */
+    .facets__display {
+        width: 220px; /* Thu nhỏ lại chút xíu */
+        left: 0;
+        right: auto;
+    }
+}
