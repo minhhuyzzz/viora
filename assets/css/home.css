@@ -6,7 +6,6 @@
 .viora-discovery { width: 100%; height: 88vh; margin-bottom: 0px; background-color: #000; }
 .discovery-container { display: flex; width: 100%; height: 100%; flex-direction: row; }
 .discovery-item { position: relative; height: 100%; min-width: 0; flex: 1; overflow: hidden; transition: flex 0.8s cubic-bezier(0.25, 1, 0.5, 1); cursor: pointer; }
-.discovery-item:hover { flex: 2; }
 .discovery-item img { position: absolute; width: 100%; height: 100%; object-fit: cover; left: 50%; top: 50%; transform: translate(-50%, -50%) scale(1); transition: transform 1.2s ease; }
 .discovery-item:hover img { transform: translate(-50%, -50%) scale(1.1); }
 .discovery-content { position: absolute; bottom: 60px; left: 50px; z-index: 10; color: #fff; pointer-events: none; }
