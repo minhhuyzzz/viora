@@ -273,7 +273,14 @@
       
       $("#d-cat").text(p.category);
       $("#d-name").text(p.name);
-      $("#d-price").text(formatPrice(parsePrice(p.price)));
+      if (p.sale_price) {
+    $("#d-price").html(`
+        <span class="text-danger me-3" style="color: #dc3545;">${formatPrice(parsePrice(p.sale_price))}</span>
+        <span class="text-muted text-decoration-line-through fw-normal" style="font-size: 0.7em; opacity: 0.6;">${formatPrice(parsePrice(p.price))}</span>
+    `);
+} else {
+    $("#d-price").text(formatPrice(parsePrice(p.price)));
+}
       $("#d-desc").html(p.description || "Thông tin đang được cập nhật...");
 
       // 2. Rating giả lập
@@ -428,7 +435,11 @@
       
       // 2. Thêm vào giỏ hàng và Chuyển hướng
       if(window.Cart) {
-        Cart.add(_product, _size, _qty); // Đưa vào giỏ
+        var productToCart = Object.assign({}, _product);
+      if (productToCart.sale_price) {
+          productToCart.price = productToCart.sale_price;
+      }
+      Cart.add(productToCart, _size, _qty); // Đưa vào giỏ
         
         // Hiệu ứng nhẹ báo đang chuyển trang
         var $btn = $(this);
@@ -454,7 +465,12 @@
       }
       
       if(window.Cart) {
-        Cart.add(_product, _size, _qty);
+        // 🌟 Tạo bản sao để ép nhận giá sale làm giá thanh toán
+      var productToCart = Object.assign({}, _product);
+      if (productToCart.sale_price) {
+          productToCart.price = productToCart.sale_price;
+      }
+      Cart.add(productToCart, _size, _qty);
         // Hiệu ứng nút
         var $btn = $(this);
         var oldHtml = $btn.html();

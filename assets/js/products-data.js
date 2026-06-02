@@ -4,11 +4,12 @@ var VIORA_PRODUCTS = [
     "id": "h1",
     "name": "Dây Chuyền Swarovski Chính Hãng Dazzling Swan Necklace DC1",
     "price": "3.890.000",
+    "sale_price": "2.990.000",
     "category": "Dây chuyền",
     "sizes": ["Freesize"],
     "images": ["/assets/images/h1.jpg", "/assets/images/h1.1.jpg", "/assets/images/h1.2.jpg", "/assets/images/h1.3.jpg", "/assets/images/h1.4.jpg"],
     "description": "Dây chuyền Swarovski Dancing Swan DC1 nổi bật với thiết kế thiên nga thanh lịch, đính pha lê lấp lánh trên nền mạ vàng hồng sang trọng. Kiểu dáng tinh tế, nữ tính, dễ phối cùng nhiều phong cách – là lựa chọn hoàn hảo cho những dịp đặc biệt hoặc làm quà tặng ý nghĩa.",
-    "tag": "Hot"
+    "tag": "Sale"
   },
   {
     "id": "h2",
@@ -24,11 +25,12 @@ var VIORA_PRODUCTS = [
     "id": "h3",
     "name": "Dây Chuyền Swarovski Chính Hãng Swan Pendant DC3",
     "price": "4.860.000",
+    "sale_price": "3.990.000",
     "category": "Dây chuyền",
     "sizes": ["Freesize"],
     "images": ["/images/h3.jpg", "/images/h3.1.jpg", "/images/h3.2.jpg", "/images/h3.3.jpg", "/images/h3.4.jpg"],
     "description": "Dây chuyền Swarovski Dancing Swan DC3 nổi bật với thiết kế thiên nga thanh lịch, đính pha lê lấp lánh trên nền mạ vàng hồng sang trọng. Kiểu dáng tinh tế, nữ tính, dễ phối cùng nhiều phong cách – là lựa chọn hoàn hảo cho những dịp đặc biệt hoặc làm quà tặng ý nghĩa.",
-    "tag": "Hot"
+    "tag": "Sale"
   },
   {
     "id": "h4",
@@ -54,11 +56,12 @@ var VIORA_PRODUCTS = [
     "id": "h6",
     "name": "Dây Chuyền Swarovski Chính Hãng Una Necklace DC6",
     "price": "4.100.000",
+    "sale_price": "3.200.000",
     "category": "Dây chuyền",
     "sizes": ["Freesize"],
     "images": ["/images/h6.jpg", "/images/h6.1.jpg", "/images/h6.2.jpg", "/images/h6.3.jpg", "/images/h6.4.jpg"],
     "description": "Dây chuyền Swarovski chính hãng DC6 hình cỏ 4 lá với viên pha lê ở trung tâm nhảy múa. Una necklace, Clover, Pink, Rose gold-tone plated đem lại sự vui tươi và may mắn cho người đeo.",
-    "tag": "Hot"
+    "tag": "Sale"
   },
   {
     "id": "h7",
@@ -74,11 +77,12 @@ var VIORA_PRODUCTS = [
     "id": "h8",
     "name": "Dây Chuyền Swarovski Chính Hãng Gema 520 Pendant DC8",
     "price": "3.350.000",
+    "sale_price": "2.850.000",
     "category": "Dây chuyền",
     "sizes": ["Freesize"],
     "images": ["/images/h8.jpg", "/images/h8.1.jpg", "/images/h8.2.jpg", "/images/h8.3.jpg", "/images/h8.4.jpg"],
     "description": "Dây chuyền Swarovski chính hãng Gema 520 Pendant, Heart, Pink, Rose gold-tone plated DC8 hình hai nửa trái tim tượng trưng cho một tình yêu say đắm.",
-    "tag": "Hot"
+    "tag": "Sale"
   },
   {
     "id": "h9",
@@ -114,11 +118,12 @@ var VIORA_PRODUCTS = [
     "id": "vt2",
     "name": "Vòng Tay Swarovski Ginger Bangle, White, Rose gold-tone plated",
     "price": "2.550.000",
+    "sale_price": "1.990.000",
     "category": "Vòng tay",
     "sizes": ["Freesize"],
     "images": ["/images/v2.jpg", "/images/v2.1.jpg", "/images/v2.2.jpg", "/images/v2.3.jpg", "/images/v2.4.jpg"],
     "description": "Vòng tay Ginger Bangle kết hợp giữa pha lê trắng tinh khiết và lớp mạ tông vàng hồng thời thượng, mang lại vẻ đẹp cổ điển và nữ tính.",
-    "tag": "Hot"
+    "tag": "Sale"
   },
   {
     "id": "vt3",
@@ -144,11 +149,12 @@ var VIORA_PRODUCTS = [
     "id": "vt5",
     "name": "Lắc Tay Swarovski Emily Bracelet, White, Rhodium plated",
     "price": "2.890.000",
+    "sale_price": "2.100.000",
     "category": "Vòng tay",
     "sizes": ["Freesize"],
     "images": ["/images/v5.jpg", "/images/v5.1.jpg", "/images/v5.2.jpg", "/images/v5.3.jpg", "/images/v5.4.jpg"],
     "description": "Một thiết kế vượt thời gian với dòng pha lê tròn cổ điển, Emily Bracelet giúp cổ tay phái đẹp thêm phần sang trọng và thu hút.",
-    "tag": "Hot"
+    "tag": "Sale"
   },
   {
     "id": "vt6",
@@ -184,11 +190,12 @@ var VIORA_PRODUCTS = [
     "id": "vt9",
     "name": "Lắc Tay Swarovski Angelic Bracelet, White, Rhodium plated",
     "price": "3.990.000",
+    "sale_price": "3.290.000",
     "category": "Vòng tay",
     "sizes": ["Freesize"],
     "images": ["/images/v9.jpg", "/images/v9.1.jpg", "/images/v9.2.jpg", "/images/v9.3.jpg", "/images/v9.4.jpg"],
     "description": "Mỗi viên pha lê tròn được bao quanh bởi một vòng pha lê nhỏ hơn, tạo nên hiệu ứng tỏa sáng rực rỡ như những thiên thần.",
-    "tag": "Hot"
+    "tag": "Sale"
   },
   {
     "id": "vt10",
@@ -214,11 +221,12 @@ var VIORA_PRODUCTS = [
     "id": "t2",
     "name": "Túi Đeo Chéo Khóa Xoay Kim Loại",
     "price": "5.900.000",
+    "sale_price": "4.900.000",
     "category": "Túi xách",
     "sizes": ["Freesize"],
     "images": ["/images/t2.jpg", "/images/t2.1.jpg", "/images/t2.2.jpg", "/images/t2.3.jpg", "/images/t2.4.jpg"],
     "description": "Một trong những dòng túi biểu tượng của hãng với phom dáng cứng cáp, tối giản nhưng vô cùng tinh tế.",
-    "tag": "Hot"
+    "tag": "Sale"
   },
   {
     "id": "t3",
@@ -244,11 +252,12 @@ var VIORA_PRODUCTS = [
     "id": "t5",
     "name": "Túi Tote Da Trơn Cỡ Lớn",
     "price": "6.900.000",
+    "sale_price": "5.500.000",
     "category": "Túi xách",
     "sizes": ["Freesize"],
     "images": ["/images/t5.jpg", "/images/t5.1.jpg", "/images/t5.2.jpg", "/images/t5.3.jpg", "/images/t5.4.jpg"],
     "description": "Đường cong mềm mại và phong cách retro xu hướng, giúp bộ trang phục của bạn trở nên thời thượng hơn.",
-    "tag": "Hot"
+    "tag": "Sale"
   },
   {
     "id": "t6",
@@ -284,11 +293,12 @@ var VIORA_PRODUCTS = [
     "id": "t9",
     "name": "Túi Cầm Tay Clutch Nắp Gập Da Sần",
     "price": "4.500.000",
+    "sale_price": "3.800.000",
     "category": "Túi xách",
     "sizes": ["Freesize"],
     "images": ["/images/t9.jpg", "/images/t9.1.jpg", "/images/t9.2.jpg", "/images/t9.3.jpg", "/images/t9.4.jpg"],
     "description": "Cơ chế khóa bấm tiện lợi cùng thiết kế vuông vức, là món phụ kiện không thể thiếu trong tủ đồ của quý cô hiện đại.",
-    "tag": "Hot"
+    "tag": "Sale"
   },
   {
     "id": "t10",
@@ -314,11 +324,12 @@ var VIORA_PRODUCTS = [
     "id": "tt32",
     "name": "Bow Sneaker (Pink)",
     "price": "4.320.000",
+    "sale_price": "3.500.000",
     "category": "Giày",
     "sizes": ["36 37 38 39"],
     "images": ["/images/sp32.3.jpg", "/images/sp32.1.jpg", "/images/sp32.2.jpg", "/images/sp32.jpg", "/images/sp32.4.jpg"],
     "description": "Cổ thấp, mũi tròn. \nDáng ôm, đế thấp. \nDây buộc hai màu phía trước and phía sau. \nĐược làm từ da ngựa thật có lông*. \n\n\nChất liệu: 100% da bò lộn \nLớp lót: 100% da cừu \nChi tiết: 100% da ngựa có lông đã qua xử lý",
-    "tag": "Hot"
+    "tag": "Sale"
   },
   {
     "id": "tt33",
@@ -354,11 +365,12 @@ var VIORA_PRODUCTS = [
     "id": "tt36",
     "name": "Deng Heels (Black)",
     "price": "5.200.000",
+    "sale_price": "4.600.000",
     "category": "Giày",
     "sizes": ["36 37 38 39"],
     "images": ["/images/sp36.jpg", "/images/sp36.1.jpg", "/images/sp36.2.jpg", "/images/sp36.3.jpg", "/images/sp36.4.jpg"],
     "description": "Mũi nhọn, hở mũi, quai dày. \nVòng cổ chân có thể tháo rời. \nĐường may zigzag, viền lông trên vòng cổ chân. \nQuai and vòng cổ chân có đệm. \nChiều cao gót: 9cm. \n\nChất liệu: Da cừu. \nLớp lót and đế trong: Da cừu . \nGót: 100% polyamide. \nChi tiết: Khóa kim loại chống gỉ. \nLogo: In lụa trên đế trong bằng da cừu.",
-    "tag": "Hot"
+    "tag": "Sale"
   },
 
   // --- DỮ LIỆU MỚI TỪ FILE CSV (THE C.I.U) ---
@@ -376,11 +388,12 @@ var VIORA_PRODUCTS = [
     "id": "k2",
     "name": "Áo khoác dù lửng bo thun năng động",
     "price": "345.000",
+    "sale_price": "290.000",
     "category": "Áo khoác",
     "sizes": ["S", "M", "L"],
     "images": ["assets/images/k2.jpg", "assets/images/k2.1.jpg", "assets/images/k2.2.jpg"],
     "description": "Thiết kế dáng lửng trẻ trung với phần tay và gấu áo bo thun chắc chắn. Chất dù hai lớp dày dặn, bề mặt vải mịn, ít nhăn, mang lại vẻ ngoài khỏe khoắn cho các bạn nữ.",
-    "tag": "Hot"
+    "tag": "Sale"
   },
   {
     "id": "k3",
@@ -406,11 +419,12 @@ var VIORA_PRODUCTS = [
     "id": "k5",
     "name": "Áo khoác dù chống nắng kèm mũ",
     "price": "365.000",
+    "sale_price": "310.000",
     "category": "Áo khoác",
     "sizes": ["S", "M", "L"],
     "images": ["assets/images/k5.jpg", "assets/images/k5.1.jpg", "assets/images/k5.2.jpg"],
     "description": "Thiết kế mũ rộng và tay áo xỏ ngón giúp bảo vệ da tối đa dưới ánh nắng. Vải dù thông hơi thoáng khí, không gây bí bách khi mặc trong thời gian dài.",
-    "tag": "Hot"
+    "tag": "Sale"
   },
   {
     "id": "k6",
@@ -436,11 +450,12 @@ var VIORA_PRODUCTS = [
     "id": "q2",
     "name": "Quần jean ống rộng phối rách",
     "price": "420.000",
+    "sale_price": "350.000",
     "category": "Quần",
     "sizes": ["S", "M", "L"],
     "images": ["assets/images/q2.jpg", "assets/images/q2.1.jpg", "assets/images/q2.2.jpg"],
     "description": "Chất denim cotton dày dặn nhưng vẫn mềm mại. Điểm nhấn là các chi tiết mài rách nhẹ tay, ống rộng phóng khoáng mang lại vẻ ngoài bụi bặm và cá cá tính.",
-    "tag": "Hot"
+    "tag": "Sale"
   },
   {
     "id": "q3",
@@ -476,11 +491,12 @@ var VIORA_PRODUCTS = [
     "id": "q6",
     "name": "Quần jean nữ ống loe retro",
     "price": "450.000",
+    "sale_price": "380.000",
     "category": "Quần",
     "sizes": ["S", "M", "L"],
     "images": ["assets/images/q6.jpg", "assets/images/q6.1.jpg", "assets/images/q6.2.jpg"],
     "description": "Thiết kế ống loe cổ điển giúp tôn vinh đường cong vòng ba và kéo dài đôi chân. Chất jean co giãn tốt, màu xanh indigo bền đẹp theo thời gian.",
-    "tag": "Hot"
+    "tag": "Sale"
   },
   {
     "id": "d1",
@@ -496,11 +512,12 @@ var VIORA_PRODUCTS = [
     "id": "d2",
     "name": "Đầm maxi be cổ lọ thướt tha",
     "price": "650.000",
+    "sale_price": "520.000",
     "category": "Đầm",
     "sizes": ["S", "M", "L"],
     "images": ["assets/images/d2.jpg", "assets/images/d2.1.jpg", "assets/images/d2.2.jpg"],
     "description": "Thiết kế dáng dài maxi, chất vải đũi xô mềm rủ. Cổ lọ không tay thanh lịch, phom dáng bay bổng phù hợp cho các chuyến du lịch biển hoặc chụp ảnh ngoại cảnh.",
-    "tag": "Hot"
+    "tag": "Sale"
   },
   {
     "id": "d3",
@@ -526,11 +543,12 @@ var VIORA_PRODUCTS = [
     "id": "d5",
     "name": "Đầm lụa đỏ cổ V quyến rũ",
     "price": "720.000",
+    "sale_price": "600.000",
     "category": "Đầm",
     "sizes": ["S", "M", "L"],
     "images": ["assets/images/d5.jpg", "assets/images/d5.1.jpg", "assets/images/d5.2.jpg"],
     "description": "Mẫu đầm tiệc sang trọng với chất liệu lụa satin bóng nhẹ. Cổ V khoét sâu vừa phải phối cùng đường xẻ tà cao, tạo hiệu ứng đôi chân dài miên man.",
-    "tag": "Hot"
+    "tag": "Sale"
   },
   {
     "id": "d6",
@@ -566,11 +584,12 @@ var VIORA_PRODUCTS = [
     "id": "d9",
     "name": "Đầm quây bodycon đen tuyền",
     "price": "490.000",
+    "sale_price": "390.000",
     "category": "Đầm",
     "sizes": ["S", "M", "L"],
     "images": ["assets/images/d9.jpg", "assets/images/d9.1.jpg", "assets/images/d9.2.jpg"],
     "description": "Thiết kế đầm quây ôm sát quyến rũ, chất vải dày dặn có lớp lót an toàn. Phom dáng tối giản nhưng vô cùng cuốn hút, phù hợp cho phong cách sexy cá tính.",
-    "tag": "Hot"
+    "tag": "Sale"
   },
   {
     "id": "d10",
@@ -583,4 +602,3 @@ var VIORA_PRODUCTS = [
     "tag": "Hot"
   }
 ];
-

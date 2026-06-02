@@ -203,15 +203,22 @@
         grid.innerHTML = data.map(p => `
             <article class="product-card-v2" onclick="location.href='product-detail.html?id=${p.id}'">
                 <div class="p-img-wrap">
-                    ${p.tag ? `<span class="p-badge">${p.tag}</span>` : ''}
+                    ${p.tag ? `<span class="p-badge" ${p.tag.toLowerCase() === 'sale' ? 'style="background-color: #dc3545;"' : ''}>${p.tag}</span>` : ''}
                     <img src="${imgSrc(p.images[0])}" class="p-img" alt="${p.name}" onerror="this.src='assets/images/placeholder.jpg'">
-                    <div class="p-quick-add">+ THÊM VÀO GIỎ</div>
+                    <div class="p-quick-add" onclick="event.stopPropagation(); addToCart('${p.id}')"><i class="fa-solid fa-bag-shopping"></i> THÊM VÀO GIỎ</div>
                 </div>
                 <div class="p-info pt-3">
                     <span class="p-cat">${p.category}</span>
                     <h3 class="p-name">${p.name}</h3>
                     <p class="p-desc">${p.description || "Sản phẩm thiết kế độc quyền từ Viora Luxury."}</p>
-                    <div class="p-price">${formatPrice(parsePrice(p.price))}</div>
+                    ${p.sale_price ? `
+    <div class="p-price-box d-flex align-items-center gap-2">
+        <span class="p-price text-danger" style="color: #dc3545; font-weight: 700;">${formatPrice(parsePrice(p.sale_price))}</span>
+        <span class="p-price-old text-muted small" style="text-decoration: line-through; opacity: 0.5; font-size: 12px; margin-left: 6px;">${formatPrice(parsePrice(p.price))}</span>
+    </div>
+` : `
+    <div class="p-price">${formatPrice(parsePrice(p.price))}</div>
+`}
                 </div>
             </article>`).join('');
 

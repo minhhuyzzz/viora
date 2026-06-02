@@ -1,9 +1,3 @@
-/* ============================================================
-   VIORA — CORE ENGINE 2026 
-   (Đã tối ưu cấu trúc: Utilities, Cart, Search, UI & Init)
-   ============================================================ */
-
-/* ── 1. UTILITIES (CÁC HÀM BỔ TRỢ) ───────────────────────── */
 function parsePrice(str) {
   if (typeof str === 'number') return str;
   return parseInt(String(str).replace(/\./g, ''), 10) || 0;
@@ -91,7 +85,12 @@ window.addToCart = function(productId) {
   if (typeof VIORA_PRODUCTS === 'undefined') return;
   var product = VIORA_PRODUCTS.find(p => p.id === productId);
   if (product) {
-      Cart.add(product, 'Freesize', 1);
+      // Bản sao để ép nhận giá sale làm giá thanh toán chính nếu có
+      var productToCart = Object.assign({}, product);
+      if (product.sale_price) {
+          productToCart.price = product.sale_price;
+      }
+      Cart.add(productToCart, 'Freesize', 1);
   }
 };
 
@@ -234,7 +233,6 @@ function initVioraGlobalSearchUI() {
 
 /* ── 4. RENDER GIAO DIỆN SẢN PHẨM ────────────────────────── */
 function renderFeaturedProducts() {
-  // Kiểm tra xem có file data và có khung viora-product-grid để in ra không
   if (typeof VIORA_PRODUCTS === 'undefined' || $('#viora-product-grid').length === 0) return;
 
   const featuredProducts = VIORA_PRODUCTS.slice(0, 4);
@@ -246,6 +244,17 @@ function renderFeaturedProducts() {
       const imgSecondary = imgs[1] ? imgSrc(imgs[1]) : imgPrimary;
       
       const tagHTML = product.tag ? `<span class="badge-new">${product.tag}</span>` : '';
+
+      // LOGIC TỰ ĐỘNG XỬ LÝ GIÁ SALE THÔNG MINH KHÔNG LO LỖI TRÙNG NHAU
+      let priceBoxHTML = '';
+      if (product.sale_price) {
+          priceBoxHTML = `
+              <span class="product-price text-danger" style="color: #dc3545; font-weight: 700; margin-right: 6px;">${product.sale_price}₫</span>
+              <span class="product-price-old text-muted small" style="text-decoration: line-through; opacity: 0.6; font-size: 11px;">${product.price}₫</span>
+          `;
+      } else {
+          priceBoxHTML = `<span class="product-price">${product.price}₫</span>`;
+      }
 
       productHTML += `
       <div class="col-6 col-md-3">
@@ -261,7 +270,7 @@ function renderFeaturedProducts() {
               </div>
               <div class="product-info mt-3 text-center">
                   <h3 class="product-name">${product.name}</h3>
-                  <div class="product-price">${product.price}₫</div>
+                  <div class="price-holder">${priceBoxHTML}</div>
               </div>
           </div>
       </div>`;
@@ -270,6 +279,65 @@ function renderFeaturedProducts() {
   $('#viora-product-grid').html(productHTML);
 }
 
+
+/* ── RENDER SẢN PHẨM GIẢM GIÁ VÀ XỬ LÝ NÚT TRƯỢT THUẦN ───────────────── */
+function renderSaleProducts() {
+    const track = document.getElementById('viora-sale-product-track');
+    if (typeof VIORA_PRODUCTS === 'undefined' || !track) return;
+
+    // Lọc TẤT CẢ hàng giảm giá
+    const saleProducts = VIORA_PRODUCTS.filter(p => p.sale_price != null && p.sale_price !== "");
+    let productHTML = '';
+
+    saleProducts.forEach(product => {
+        const imgs = product.images && product.images.length ? product.images : [];
+        const imgPrimary = imgs[0] ? imgSrc(imgs[0]) : 'assets/images/logo.png';
+        const imgSecondary = imgs[1] ? imgSrc(imgs[1]) : imgPrimary;
+        
+        const tagHTML = product.tag ? `<span class="badge-new" style="background-color: #dc3545;">${product.tag}</span>` : '';
+        const priceBoxHTML = `
+            <span class="product-price text-danger" style="color: #dc3545; font-weight: 700; margin-right: 6px;">${product.sale_price}₫</span>
+            <span class="product-price-old text-muted small" style="text-decoration: line-through; opacity: 0.6; font-size: 11px;">${product.price}₫</span>
+        `;
+
+        productHTML += `
+        <div class="viora-native-slide">
+            <div class="viora-product-card" onclick="window.location.href='product-detail.html?id=${product.id}'" style="cursor: pointer;">
+                <div class="product-img-wrap">
+                    ${tagHTML}
+                    <img src="${imgPrimary}" class="img-primary" alt="${product.name}">
+                    <img src="${imgSecondary}" class="img-secondary" alt="${product.name}">
+                    <button class="btn-add-cart" aria-label="Thêm vào giỏ" onclick="event.stopPropagation(); addToCart('${product.id}')">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                    </button>
+                </div>
+                <div class="product-info mt-3 text-center">
+                    <h3 class="product-name">${product.name}</h3>
+                    <div class="price-holder">${priceBoxHTML}</div>
+                </div>
+            </div>
+        </div>`;
+    });
+
+    track.innerHTML = productHTML;
+
+    // KÍCH HOẠT 2 NÚT MŨI TÊN (JAVASCRIPT THUẦN)
+    const btnPrev = document.querySelector('.viora-native-btn.prev-btn');
+    const btnNext = document.querySelector('.viora-native-btn.next-btn');
+
+    if (btnPrev && btnNext) {
+        btnNext.addEventListener('click', () => {
+            // Lấy độ rộng của 1 ô sản phẩm cộng với 20px khoảng cách
+            const slideWidth = track.querySelector('.viora-native-slide').offsetWidth + 20; 
+            track.scrollBy({ left: slideWidth, behavior: 'smooth' }); // Trượt sang phải
+        });
+        
+        btnPrev.addEventListener('click', () => {
+            const slideWidth = track.querySelector('.viora-native-slide').offsetWidth + 20;
+            track.scrollBy({ left: -slideWidth, behavior: 'smooth' }); // Trượt sang trái
+        });
+    }
+}
 // Hàm Đăng xuất
 window.vioraLogout = function(e) {
   if (e) e.preventDefault(); 
@@ -289,6 +357,7 @@ $(document).ready(function() {
   // 5.2 Khởi tạo cốt lõi
   initVioraGlobalSearchUI();
   renderFeaturedProducts();
+  renderSaleProducts();
   if(window.Cart && Cart.updateBadge) Cart.updateBadge(); 
 
   // 5.3 Hiệu ứng Header cho User đăng nhập
@@ -354,35 +423,32 @@ $(document).ready(function() {
       item.siblings().removeClass('active');
       item.toggleClass('active');
   });
- // XỬ LÝ NÚT WIDGET LIÊN HỆ
- const widgetBtn = document.getElementById('viora-widget-btn');
- const widgetMenu = document.getElementById('viora-widget-menu');
 
- if (widgetBtn && widgetMenu) {
-     widgetBtn.addEventListener('click', function(e) {
-         e.stopPropagation(); // Ngăn chặn nổi bọt sự kiện
-         widgetMenu.classList.toggle('show');
-         const icon = this.querySelector('i');
-         
-         // Đổi icon từ cái Tai nghe sang dấu X khi mở
-         if (widgetMenu.classList.contains('show')) {
-             icon.classList.remove('fa-headset');
-             icon.classList.add('fa-xmark');
-         } else {
-             icon.classList.remove('fa-xmark');
-             icon.classList.add('fa-headset');
-         }
-     });
+  // XỬ LÝ NÚT WIDGET LIÊN HỆ
+  const widgetBtn = document.getElementById('viora-widget-btn');
+  const widgetMenu = document.getElementById('viora-widget-menu');
 
-     // Bấm ra ngoài màn hình tự động đóng Widget lại cho gọn
-     document.addEventListener('click', function(event) {
-         if (!widgetBtn.contains(event.target) && !widgetMenu.contains(event.target)) {
-             widgetMenu.classList.remove('show');
-             widgetBtn.querySelector('i').classList.remove('fa-xmark');
-             widgetBtn.querySelector('i').classList.add('fa-headset');
-         }
-     });
- }
+  if (widgetBtn && widgetMenu) {
+      widgetBtn.addEventListener('click', function(e) {
+          e.stopPropagation(); 
+          widgetMenu.classList.toggle('show');
+          const icon = this.querySelector('i');
+          
+          if (widgetMenu.classList.contains('show')) {
+              icon.classList.remove('fa-headset');
+              icon.classList.add('fa-xmark');
+          } else {
+              icon.classList.remove('fa-xmark');
+              icon.classList.add('fa-headset');
+          }
+      });
+
+      document.addEventListener('click', function(event) {
+          if (!widgetBtn.contains(event.target) && !widgetMenu.contains(event.target)) {
+              widgetMenu.classList.remove('show');
+              widgetBtn.querySelector('i').classList.remove('fa-xmark');
+              widgetBtn.querySelector('i').classList.add('fa-headset');
+          }
+      });
+  }
 });
-
-
