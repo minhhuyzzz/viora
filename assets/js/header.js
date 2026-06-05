@@ -34,7 +34,7 @@ const vioraHeader = `
                             </div>
                             <div class="col-md-6 border-start border-secondary ps-5">
                                 <div class="mega-promo text-white">
-                                    <p class="small opacity-50 mb-1">BST THU ĐÔNG 2026</p>
+                                    <p class="small opacity-50 mb-1">CẬT NHẬT MỚI NHẤT 2026</p>
                                     <h3 class="premium-font mb-3">PHONG CÁCH TỐI GIẢN</h3>
                                     <a href="shop.html" class="btn btn-outline-light rounded-0 btn-sm px-4">KHÁM PHÁ</a>
                                 </div>
