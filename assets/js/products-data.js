@@ -1,5 +1,4 @@
 var VIORA_PRODUCTS = [
-  // --- DỮ LIỆU CŨ TỪ FILE JS ---
   {
     "id": "h1",
     "name": "Dây Chuyền Swarovski Chính Hãng Dazzling Swan Necklace DC1",

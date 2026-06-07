@@ -162,21 +162,21 @@
    📱 TỰ ĐỘNG GẬP KHI XUỐNG ĐIỆN THOẠI (CHỐNG LỖI 8 Ô CỦA ĐIỆN THOẠI)
    ============================================================ */
 @media (max-width: 991px) {
-    .viora-cat-pure-container { padding: 0 !important; }
+    .viora-cat-pure-container { padding: 0 ; }
     .viora-custom-row {
         /* Trên điện thoại tự động sinh ra 8 cột xếp hàng ngang vuốt quẹt mượt mà */
-        grid-template-columns: repeat(8, 110px) !important; 
-        gap: 12px !important;
-        overflow-x: auto !important;
+        grid-template-columns: repeat(8, 110px); 
+        gap: 12px ;
+        overflow-x: auto;
         -webkit-overflow-scrolling: touch;
-        width: calc(100% + 30px) !important;
-        margin-left: -15px !important;
-        padding: 0 15px 15px 15px !important;
+        width: calc(100% + 30px);
+        margin-left: -15px ;
+        padding: 0 15px 15px 15px ;
     }
-    .viora-custom-row::-webkit-scrollbar { display: none !important; }
-    .viora-cat-item-pure { width: 110px !important; }
-    .viora-cat-circle-box { width: 100px !important; height: 100px !important; margin-bottom: 8px !important; }
-    .viora-cat-pure-name { font-size: 11px !important; }
+    .viora-custom-row::-webkit-scrollbar { display: none ; }
+    .viora-cat-item-pure { width: 110px ; }
+    .viora-cat-circle-box { width: 100px ; height: 100px; margin-bottom: 8px; }
+    .viora-cat-pure-name { font-size: 11px; }
 }
 
 

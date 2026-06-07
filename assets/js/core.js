@@ -95,6 +95,19 @@ window.addToCart = function(productId) {
 };
 
 
+/* ── HELPER FUNCTIONS FOR PRODUCT RENDERING ────────────── */
+function generatePriceHTML(product) {
+  if (product.sale_price) {
+    return `<span class="product-price" style="color: #dc3545; font-weight: 700; margin-right: 6px;">${product.sale_price}₫</span>
+            <span class="product-price-old" style="text-decoration: line-through; opacity: 0.6; font-size: 11px;">${product.price}₫</span>`;
+  }
+  return `<span class="product-price">${product.price}₫</span>`;
+}
+
+function generateTagHTML(product) {
+  return product.tag ? `<span class="badge-new">${product.tag}</span>` : '';
+}
+
 /* ── 3. TÌM KIẾM SẢN PHẨM (SEARCH ENGINE) ────────────────── */
 function vioraFilterProductsForSearch(q, limit) {
   limit = limit || 8;
@@ -175,9 +188,8 @@ function initVioraGlobalSearchUI() {
           return;
       }
       resultsEl.innerHTML = list.map(function(p) {
-          var img = typeof imgSrc === 'function' ? imgSrc(p.images && p.images[0]) : 'assets/images/placeholder.jpg';
-          var price = typeof formatPrice === 'function' && typeof parsePrice === 'function'
-              ? formatPrice(parsePrice(p.price)) : (p.price || '');
+          var img = imgSrc(p.images && p.images[0]);
+          var price = formatPrice(parsePrice(p.price));
           return (
               '<a class="viora-search-result-row" href="product-detail.html?id=' + encodeURIComponent(String(p.id)) + '">' +
               '  <span class="viora-search-result-row__img"><img src="' + vioraEscapeHtml(img) + '" alt="' + vioraEscapeHtml(p.name || '') + '"></span>' +
@@ -243,18 +255,8 @@ function renderFeaturedProducts() {
       const imgPrimary = imgs[0] ? imgSrc(imgs[0]) : 'assets/images/logo.png';
       const imgSecondary = imgs[1] ? imgSrc(imgs[1]) : imgPrimary;
       
-      const tagHTML = product.tag ? `<span class="badge-new">${product.tag}</span>` : '';
-
-      // LOGIC TỰ ĐỘNG XỬ LÝ GIÁ SALE THÔNG MINH KHÔNG LO LỖI TRÙNG NHAU
-      let priceBoxHTML = '';
-      if (product.sale_price) {
-          priceBoxHTML = `
-              <span class="product-price text-danger" style="color: #dc3545; font-weight: 700; margin-right: 6px;">${product.sale_price}₫</span>
-              <span class="product-price-old text-muted small" style="text-decoration: line-through; opacity: 0.6; font-size: 11px;">${product.price}₫</span>
-          `;
-      } else {
-          priceBoxHTML = `<span class="product-price">${product.price}₫</span>`;
-      }
+      const tagHTML = generateTagHTML(product);
+      const priceBoxHTML = generatePriceHTML(product);
 
       productHTML += `
       <div class="col-6 col-md-3">
@@ -280,7 +282,7 @@ function renderFeaturedProducts() {
 }
 
 
-/* ── RENDER SẢN PHẨM GIẢM GIÁ VÀ XỬ LÝ NÚT TRƯỢT THUẦN ───────────────── */
+/* ── RENDER SẢN PHẨM GIẢM GIÁ VÀ XỬ LÝ NÚT TRƯỢT */
 function renderSaleProducts() {
     const track = document.getElementById('viora-sale-product-track');
     if (typeof VIORA_PRODUCTS === 'undefined' || !track) return;
@@ -288,17 +290,15 @@ function renderSaleProducts() {
     // Lọc TẤT CẢ hàng giảm giá
     const saleProducts = VIORA_PRODUCTS.filter(p => p.sale_price != null && p.sale_price !== "");
     let productHTML = '';
+    let slideWidth = 0;
 
     saleProducts.forEach(product => {
         const imgs = product.images && product.images.length ? product.images : [];
         const imgPrimary = imgs[0] ? imgSrc(imgs[0]) : 'assets/images/logo.png';
         const imgSecondary = imgs[1] ? imgSrc(imgs[1]) : imgPrimary;
         
-        const tagHTML = product.tag ? `<span class="badge-new" style="background-color: #dc3545;">${product.tag}</span>` : '';
-        const priceBoxHTML = `
-            <span class="product-price text-danger" style="color: #dc3545; font-weight: 700; margin-right: 6px;">${product.sale_price}₫</span>
-            <span class="product-price-old text-muted small" style="text-decoration: line-through; opacity: 0.6; font-size: 11px;">${product.price}₫</span>
-        `;
+        const tagHTML = generateTagHTML(product);
+        const priceBoxHTML = generatePriceHTML(product);
 
         productHTML += `
         <div class="viora-native-slide">
@@ -321,21 +321,20 @@ function renderSaleProducts() {
 
     track.innerHTML = productHTML;
 
-    // KÍCH HOẠT 2 NÚT MŨI TÊN (JAVASCRIPT THUẦN)
     const btnPrev = document.querySelector('.viora-native-btn.prev-btn');
     const btnNext = document.querySelector('.viora-native-btn.next-btn');
 
     if (btnPrev && btnNext) {
-        btnNext.addEventListener('click', () => {
-            // Lấy độ rộng của 1 ô sản phẩm cộng với 20px khoảng cách
-            const slideWidth = track.querySelector('.viora-native-slide').offsetWidth + 20; 
-            track.scrollBy({ left: slideWidth, behavior: 'smooth' }); // Trượt sang phải
-        });
-        
-        btnPrev.addEventListener('click', () => {
-            const slideWidth = track.querySelector('.viora-native-slide').offsetWidth + 20;
-            track.scrollBy({ left: -slideWidth, behavior: 'smooth' }); // Trượt sang trái
-        });
+        const firstSlide = track.querySelector('.viora-native-slide');
+        if (firstSlide) {
+            slideWidth = firstSlide.offsetWidth + 20;
+            btnNext.addEventListener('click', () => {
+                track.scrollBy({ left: slideWidth, behavior: 'smooth' });
+            });
+            btnPrev.addEventListener('click', () => {
+                track.scrollBy({ left: -slideWidth, behavior: 'smooth' });
+            });
+        }
     }
 }
 // Hàm Đăng xuất

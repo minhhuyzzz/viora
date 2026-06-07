@@ -110,6 +110,7 @@
 
   <script src="assets/libs/jquery.min.js"></script>
   <script src="assets/libs/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/storage.js"></script>
   <script src="assets/js/core.js"></script> 
   
   <script>
@@ -119,6 +120,12 @@
 
       if (window.injectLayout) injectLayout();
       if (window.initHeader) initHeader();
+
+      const user = Auth.getCurrentUser();
+      if (!user || !user.loggedIn) {
+        window.location.href = 'login.html?redirect=checkout.html';
+        return;
+      }
 
       renderCheckoutPage();
     });
@@ -174,10 +181,12 @@
 
       if (window.Cart && Cart.updateBadge) Cart.updateBadge();
 
+      const user = Auth.getCurrentUser();
+
       if (savedProfile) {
-        document.getElementById('checkout-name').value = savedProfile.name || '';
+        document.getElementById('checkout-name').value = savedProfile.name || user?.name || '';
         document.getElementById('checkout-phone').value = savedProfile.phone || '';
-        document.getElementById('checkout-email').value = savedProfile.email || '';
+        document.getElementById('checkout-email').value = savedProfile.email || user?.email || '';
         document.getElementById('checkout-city').value = savedProfile.city || '';
         document.getElementById('checkout-district').value = savedProfile.district || '';
         document.getElementById('checkout-address').value = savedProfile.address || '';
@@ -186,6 +195,9 @@
           const savedPayment = document.querySelector(`input[name="checkout-payment"][value="${savedProfile.paymentMethod}"]`);
           if (savedPayment) savedPayment.checked = true;
         }
+      } else if (user) {
+        document.getElementById('checkout-name').value = user.name || '';
+        document.getElementById('checkout-email').value = user.email || '';
       }
 
       const placeOrderBtn = document.getElementById('place-order-btn');

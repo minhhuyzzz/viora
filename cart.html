@@ -100,6 +100,18 @@
       if (window.initHeader) initHeader();
 
       renderCartPage();
+
+      const checkoutBtn = document.querySelector('a[href="checkout.html"]');
+      if (checkoutBtn) {
+        checkoutBtn.addEventListener('click', function(e) {
+          let user = null;
+          try { user = JSON.parse(localStorage.getItem('viora_user')); } catch(err) {}
+          if (!user || !user.loggedIn) {
+            e.preventDefault();
+            window.location.href = 'login.html?redirect=checkout.html';
+          }
+        });
+      }
     });
 
     // HÀM FIX ĐƯỜNG DẪN ẢNH

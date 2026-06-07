@@ -53,7 +53,7 @@
 
         // Check Login
         let user = JSON.parse(localStorage.getItem('viora_user'));
-        if (!user || !user.loggedIn) { window.location.href = "login.html"; return; }
+        if (!user || !user.loggedIn) { window.location.href = "login.html?redirect=orders.html"; return; }
 
         renderOrders();
     });

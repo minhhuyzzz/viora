@@ -65,7 +65,6 @@
    .header-icons i:hover { opacity: 0.6; }
    .viora-icons-group { display: flex; align-items: center; }
    .viora-icon { color: #FFFFFF !important; text-decoration: none; font-size: 20px; transition: 0.3s ease; display: flex; align-items: center; }
-   .viora-icon i { color: #FFFFFF !important; }
    .viora-icon:hover { opacity: 0.5; }
    button.viora-icon { background: none; border: none; padding: 0; margin: 0; cursor: pointer; font: inherit; line-height: 1; }
    
@@ -93,7 +92,7 @@
    .viora-search-overlay__backdrop { position: absolute; inset: 0; background: rgba(0, 0, 0, 0.65); cursor: pointer; }
    .viora-search-overlay__panel { position: relative; width: 100%; max-width: 560px; background: #fff; border-radius: 4px; box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35); padding: 1.25rem 1.5rem 1.5rem; z-index: 1; }
    .viora-search-overlay__head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
-   .viora-search-overlay__title { font-family: var(--font-display, "Playfair Display", serif); font-size: 1.25rem; font-weight: 700; margin: 0; color: #111; }
+   .viora-search-overlay__title { font-family: var(--font-h); font-size: 1.25rem; font-weight: 700; margin: 0; color: #111; }
    .viora-search-overlay__close { border: none; background: transparent; font-size: 1.75rem; line-height: 1; color: #666; cursor: pointer; padding: 0 0.25rem; }
    .viora-search-overlay__close:hover { color: #000; }
    .viora-search-overlay__field { display: flex; align-items: center; gap: 0.75rem; border: 1px solid #ddd; border-radius: 4px; padding: 0.65rem 1rem; background: #fafafa; }
@@ -156,7 +155,7 @@
     font-size: 22px;
     cursor: pointer;
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: transform 0.3s ease, background-color 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -177,7 +176,7 @@
     opacity: 0;
     visibility: hidden;
     transform: translateY(20px) scale(0.9);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: opacity 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
     z-index: 1;
     align-items: center;
@@ -202,7 +201,7 @@
     text-decoration: none;
     font-size: 20px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
     position: relative;
     border: 1px solid #eee;
 }
@@ -226,7 +225,7 @@
     white-space: nowrap;
     opacity: 0;
     visibility: hidden;
-    transition: 0.3s ease;
+    transition: opacity 0.3s ease, right 0.3s ease;
     pointer-events: none;
     letter-spacing: 1px;
     text-transform: uppercase;

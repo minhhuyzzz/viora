@@ -113,11 +113,22 @@
   <script src="assets/js/storage.js"></script>
   
   <script>
+    function getRedirectUrl() {
+        const redirect = new URLSearchParams(window.location.search).get('redirect');
+        if (redirect && /^[a-zA-Z0-9_\-\.]+\.html$/.test(redirect)) return redirect;
+        return 'index.html';
+    }
+
     document.addEventListener("DOMContentLoaded", function() {
-        // Nếu đã đăng nhập, tự động đá về trang chủ
         const user = Auth.getCurrentUser();
         if (user && user.loggedIn) {
-            window.location.href = 'index.html';
+            window.location.href = getRedirectUrl();
+            return;
+        }
+
+        if (new URLSearchParams(window.location.search).get('redirect') === 'checkout.html') {
+            const subtitle = document.querySelector('#view-login .auth-subtitle');
+            if (subtitle) subtitle.textContent = 'Vui lòng đăng nhập để tiếp tục thanh toán';
         }
     });
 
@@ -147,7 +158,7 @@
                 document.getElementById('reg-alert').className = "alert alert-success";
                 document.getElementById('reg-alert').textContent = result.msg;
                 document.getElementById('reg-alert').style.display = 'block';
-                setTimeout(() => window.location.href = 'index.html', 1000);
+                setTimeout(() => window.location.href = getRedirectUrl(), 1000);
             } else {
                 document.getElementById('reg-alert').className = "alert alert-danger";
                 document.getElementById('reg-alert').textContent = result.msg;
@@ -174,7 +185,7 @@
                 document.getElementById('login-alert').className = "alert alert-success";
                 document.getElementById('login-alert').textContent = result.msg;
                 document.getElementById('login-alert').style.display = 'block';
-                setTimeout(() => window.location.href = 'index.html', 1000);
+                setTimeout(() => window.location.href = getRedirectUrl(), 1000);
             } else {
                 document.getElementById('login-alert').className = "alert alert-danger";
                 document.getElementById('login-alert').textContent = result.msg;

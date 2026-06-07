@@ -1,7 +1,5 @@
-// ... Các biến _cat, _query, _page giữ nguyên của Huy ...
-
 function renderShop() {
-    var all = getFiltered(); // Hàm lấy từ code cũ của Huy
+    var all = getFiltered(); 
     var data = all.slice((_page-1)*PER_PAGE, _page*PER_PAGE);
     var grid = document.getElementById("prod-grid");
 
@@ -26,5 +24,5 @@ function renderShop() {
         </article>`;
     }).join("");
 
-    // Giữ nguyên logic Reveal và Phân trang của Huy bên dưới...
+  
 }
